@@ -1,1 +1,1 @@
-- 👋 Hi, I’m @skarard
+<a rel="me" href="https://cryptodon.lol/@skarard"></a>
