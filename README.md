@@ -18,3 +18,6 @@ I am proud to announce the release of my latest creation, the Encrypted Ethers W
 
 ## 2023/02/08
 SnowShughes is working on the user experience (UX) design for Authenticity, a blockchain-based platform for verifying images to combat deep fake technology.
+
+## 2023/02/06
+The Authenticity platform, a blockchain-based solution for verifying images, has been deployed on the Polygon Mumbai network. Check out the live demo at https://authenticity-frontend.vercel.app/. The smart contract repository is available on GitHub at https://github.com/skarard/authenticity-smart-contracts and can be viewed on SmartContractGUI at https://www.smartcontractgui.xyz/Authenticity-V1-CJPiiWMed3. PolygonScan provides further information at https://mumbai.polygonscan.com/address/0xABFd0922f43C6591400F30ccFae055d5e2a54122.
