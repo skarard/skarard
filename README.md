@@ -10,3 +10,9 @@ I'm dedicated to learning and developing decentralised technology to give us mor
 Thanks for taking the time to visit my github profile and learn more about my interests. 
 
 Happy exploring!
+
+---
+# Updates
+## 2023/02/11
+I am proud to announce the release of my latest creation, the Encrypted Ethers Wallet. This tool is designed to make it easier for users to create password-protected JSON wallets for use with the Ethers blockchain. I built this tool with the goal of providing a versatile and secure solution for interacting with the Ethers network, and I hope that others will find it useful. After a lot of hard work and dedication, I am thrilled to finally share this project with the world, and I look forward to seeing how it is put to use.
+
