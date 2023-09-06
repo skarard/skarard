@@ -1,12 +1,10 @@
-* 👨‍💻 Web3 Lead @ Massless 
-* Digital Native · 1st Wave Crypto Native
-* Building the future of decentralized society.  
+* 🚀 CTO @ MetaLumna
+*  Deep Tech Developer
+* Producer of Powerful AI & Blockchain Solutions  
 
 ## About Me
-I'm passionate about creating a safe and secure Decentralised Society, pushing the boundaries of Racing Quadcopters, and performing innovative Circus acts. 
+Driven by the pursuit of technological excellence, I am the Chief Technology Officer at MetaLumna, an expert in deep tech, and an architect of impactful AI and blockchain technology solutions.
 
-I'm dedicated to learning and developing decentralised technology to give us more trust and transparency. I'm honing my skills in the world of racing quadcopters with a flight simulator called Lift-Off and I'm also a retired acrobat of 10 years, having performed all over the world with my company Boom Circus Theatre and DuoSu. 
+There are values that the blockchain technology encapsulates like security, transparency, and efficiency that resonate with me. It offers an extraordinary array of opportunities, and when integrated with AI, it imposes a constructive disruption to the technological space which aligns with my urge towards creative innovation.
 
-Thanks for taking the time to visit my github profile and learn more about my interests. 
-
-Happy exploring!
+Although I've worn many hats, one of the most interesting ones was when I was a professional acrobat! It's this intriguing mix of adaptability, creativity and practical design that I bring to the tech field, giving me a unique edge in this continuously evolving world of deep tech. 
