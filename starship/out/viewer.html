@@ -43,15 +43,18 @@ body { background: radial-gradient(120% 90% at 50% 35%, var(--stage-hi), var(--b
 .group button:hover { background: color-mix(in srgb, var(--fg) 9%, transparent); }
 .group button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
 .group button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-#fail { position: absolute; inset: 40% 16px auto; text-align: center; color: var(--muted); }
+@media (max-width: 520px) {
+  .group span { display: none; }
+  .group button { padding: 9px 9px; }
+  .plate p { font-size: 11.5px; }
+}
 </style>
 
 <div id="stage">
   <div class="plate">
     <h1>Tile Starship Blockout</h1>
-    <p><b id="count">–</b> tiles · <b id="size">–</b> tile edges (L × W × H) · grid square = 1 tile edge</p>
+    <p><b id="count">–</b> tiles · <b id="size">–</b> tile edges (L × W × H) · grid square = 1 tile edge<br>drag to orbit · pinch or scroll to zoom</p>
   </div>
-  <p id="fail" hidden>The 3D view could not start in this browser.</p>
   <div class="dock">
     <div class="group" role="group" aria-label="Surface">
       <span>Surface</span>
@@ -61,8 +64,8 @@ body { background: radial-gradient(120% 90% at 50% 35%, var(--stage-hi), var(--b
     </div>
     <div class="group" role="group" aria-label="Camera">
       <span>View</span>
-      <button id="view-wing" data-view="wing">Wing side</button>
-      <button id="view-dome" data-view="dome">Dome side</button>
+      <button id="view-wing" data-view="wing">Wing</button>
+      <button id="view-dome" data-view="dome">Dome</button>
       <button id="view-nose" data-view="nose">Nose</button>
       <button id="view-tail" data-view="tail">Tail</button>
       <button id="view-top" data-view="top">Top</button>
@@ -71,136 +74,187 @@ body { background: radial-gradient(120% 90% at 50% 35%, var(--stage-hi), var(--b
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
 const DATA = {"bar":0.13,"thick":0.05,"colors":{"red":"#e0262b","orange":"#f07a1a","yellow":"#f2c81e","green":"#4fb53a","blue":"#2456d6","purple":"#8a3fc0","pink":"#ec5fa8","magenta":"#c2289a","cyan":"#2aa7de"},"tiles":[{"n":"nose_cube_front","g":"spine","c":"purple","p":[[-1.5,-0.5,0.0],[-1.5,0.5,0.0],[-1.5,0.5,1.0],[-1.5,-0.5,1.0]]},{"n":"nose_cube_side_wing","g":"spine","c":"pink","p":[[-1.5,0.5,0.0],[-0.5,0.5,0.0],[-0.5,0.5,1.0],[-1.5,0.5,1.0]]},{"n":"nose_cube_side_dome","g":"spine","c":"blue","p":[[-1.5,-0.5,0.0],[-0.5,-0.5,0.0],[-0.5,-0.5,1.0],[-1.5,-0.5,1.0]]},{"n":"nose_cube_bulkhead","g":"spine","c":"orange","p":[[-0.5,-0.5,0.0],[-0.5,0.5,0.0],[-0.5,0.5,1.0],[-0.5,-0.5,1.0]]},{"n":"nose_cube_roof","g":"spine","c":"yellow","p":[[-1.5,-0.5,1.0],[-0.5,-0.5,1.0],[-0.5,0.5,1.0],[-1.5,0.5,1.0]]},{"n":"centre_side_wing","g":"spine","c":"yellow","p":[[-0.5,0.5,0.0],[0.5,0.5,0.0],[0.5,0.5,1.0],[-0.5,0.5,1.0]]},{"n":"centre_side_dome","g":"spine","c":"orange","p":[[-0.5,-0.5,0.0],[0.5,-0.5,0.0],[0.5,-0.5,1.0],[-0.5,-0.5,1.0]]},{"n":"centre_bulkhead","g":"spine","c":"red","p":[[0.5,-0.5,0.0],[0.5,0.5,0.0],[0.5,0.5,1.0],[0.5,-0.5,1.0]]},{"n":"centre_roof","g":"spine","c":"green","p":[[-0.5,-0.5,1.0],[0.5,-0.5,1.0],[0.5,0.5,1.0],[-0.5,0.5,1.0]]},{"n":"tail_cube_side_wing","g":"spine","c":"yellow","p":[[0.5,0.5,0.0],[1.5,0.5,0.0],[1.5,0.5,1.0],[0.5,0.5,1.0]]},{"n":"tail_cube_side_dome","g":"spine","c":"orange","p":[[0.5,-0.5,0.0],[1.5,-0.5,0.0],[1.5,-0.5,1.0],[0.5,-0.5,1.0]]},{"n":"tail_cube_back","g":"spine","c":"yellow","p":[[1.5,-0.5,0.0],[1.5,0.5,0.0],[1.5,0.5,1.0],[1.5,-0.5,1.0]]},{"n":"tail_cube_roof","g":"spine","c":"orange","p":[[0.5,-0.5,1.0],[1.5,-0.5,1.0],[1.5,0.5,1.0],[0.5,0.5,1.0]]},{"n":"wing_prism_face","g":"outrigger_wing","c":"red","p":[[0.0,1.366,0.0],[1.0,1.366,0.0],[1.0,1.366,1.0],[0.0,1.366,1.0]]},{"n":"wing_prism_wall_nose","g":"outrigger_wing","c":"blue","p":[[0.0,1.366,0.0],[0.5,0.5,0.0],[0.5,0.5,1.0],[0.0,1.366,1.0]]},{"n":"wing_prism_wall_tail","g":"outrigger_wing","c":"yellow","p":[[1.0,1.366,0.0],[0.5,0.5,0.0],[0.5,0.5,1.0],[1.0,1.366,1.0]]},{"n":"wing_infill_wall","g":"outrigger_wing","c":"magenta","p":[[0.0,1.366,0.0],[-0.5,0.5,0.0],[-0.5,0.5,1.0],[0.0,1.366,1.0]]},{"n":"wing_prism_roof","g":"outrigger_wing","c":"cyan","p":[[0.0,1.366,1.0],[1.0,1.366,1.0],[0.5,0.5,1.0]]},{"n":"wing_infill_roof","g":"outrigger_wing","c":"pink","p":[[0.0,1.366,1.0],[-0.5,0.5,1.0],[0.5,0.5,1.0]]},{"n":"wing_trapezoid","g":"outrigger_wing","c":"pink","p":[[-0.5,0.5,0.025],[-1.5,0.5,0.025],[-2.0,1.366,0.025],[0.0,1.366,0.025]]},{"n":"dome_prism_face","g":"outrigger_dome","c":"orange","p":[[0.0,-1.366,0.0],[1.0,-1.366,0.0],[1.0,-1.366,1.0],[0.0,-1.366,1.0]]},{"n":"dome_prism_wall_nose","g":"outrigger_dome","c":"blue","p":[[0.0,-1.366,0.0],[0.5,-0.5,0.0],[0.5,-0.5,1.0],[0.0,-1.366,1.0]]},{"n":"dome_prism_wall_tail","g":"outrigger_dome","c":"yellow","p":[[1.0,-1.366,0.0],[0.5,-0.5,0.0],[0.5,-0.5,1.0],[1.0,-1.366,1.0]]},{"n":"dome_prism_roof","g":"outrigger_dome","c":"red","p":[[0.0,-1.366,1.0],[1.0,-1.366,1.0],[0.5,-0.5,1.0]]},{"n":"dome_infill_roof","g":"outrigger_dome","c":"purple","p":[[0.0,-1.366,1.0],[-0.5,-0.5,1.0],[0.5,-0.5,1.0]]},{"n":"spire_wing","g":"spire","c":"pink","p":[[-0.5,0.5,1.0],[0.5,0.5,1.0],[0.0,0.0,2.8708]]},{"n":"spire_dome","g":"spire","c":"green","p":[[-0.5,-0.5,1.0],[0.5,-0.5,1.0],[0.0,-0.0,2.8708]]},{"n":"nose_pod_end","g":"nose_pod","c":"red","p":[[-1.5,-0.5,1.0],[-1.5,0.5,1.0],[-1.25,0.5,1.9682],[-1.25,-0.5,1.9682]]},{"n":"nose_pod_roof","g":"nose_pod","c":"blue","p":[[-1.25,-0.5,1.9682],[-0.25,-0.5,1.9682],[-0.25,0.5,1.9682],[-1.25,0.5,1.9682]]},{"n":"nose_pod_up_wing","g":"nose_pod","c":"pink","p":[[-1.5,0.5,1.0],[-0.5,0.5,1.0],[-1.0,0.3496,1.8529]]},{"n":"nose_pod_up_dome","g":"nose_pod","c":"green","p":[[-1.5,-0.5,1.0],[-0.5,-0.5,1.0],[-1.0,-0.3496,1.8529]]},{"n":"nose_pod_down_wing","g":"nose_pod","c":"red","p":[[-1.25,0.5,1.9682],[-0.25,0.5,1.9682],[-0.75,0.5,1.1022]]},{"n":"nose_pod_down_dome","g":"nose_pod","c":"red","p":[[-1.25,-0.5,1.9682],[-0.25,-0.5,1.9682],[-0.75,-0.5,1.1022]]},{"n":"tail_pod_end","g":"tail_pod","c":"purple","p":[[1.5,-0.5,1.0],[1.5,0.5,1.0],[1.25,0.5,1.9682],[1.25,-0.5,1.9682]]},{"n":"tail_pod_roof","g":"tail_pod","c":"red","p":[[1.25,-0.5,1.9682],[0.25,-0.5,1.9682],[0.25,0.5,1.9682],[1.25,0.5,1.9682]]},{"n":"tail_pod_up_wing","g":"tail_pod","c":"pink","p":[[1.5,0.5,1.0],[0.5,0.5,1.0],[1.0,0.3496,1.8529]]},{"n":"tail_pod_up_dome","g":"tail_pod","c":"green","p":[[1.5,-0.5,1.0],[0.5,-0.5,1.0],[1.0,-0.3496,1.8529]]},{"n":"tail_pod_down_wing","g":"tail_pod","c":"yellow","p":[[1.25,0.5,1.9682],[0.25,0.5,1.9682],[0.75,0.5,1.1022]]},{"n":"tail_pod_down_dome","g":"tail_pod","c":"orange","p":[[1.25,-0.5,1.9682],[0.25,-0.5,1.9682],[0.75,-0.5,1.1022]]},{"n":"dome_00","g":"dome","c":"yellow","p":[[-0.5727,-1.2877,0.0],[-0.6937,-2.0952,0.5774],[-1.4453,-1.7761,0.0]]},{"n":"dome_01","g":"dome","c":"yellow","p":[[-0.5727,-1.2877,0.0],[-1.432,-0.7762,0.0],[-0.6722,-0.4773,0.5774]]},{"n":"dome_02","g":"dome","c":"purple","p":[[-0.5727,-1.2877,0.0],[-0.6722,-0.4773,0.5774],[-0.2159,-1.2924,0.9342]]},{"n":"dome_03","g":"dome","c":"yellow","p":[[-0.5727,-1.2877,0.0],[-0.2159,-1.2924,0.9342],[-0.6937,-2.0952,0.5774]]},{"n":"dome_04","g":"dome","c":"blue","p":[[-1.4453,-1.7761,0.0],[-2.0841,-1.2676,0.5774],[-1.432,-0.7762,0.0]]},{"n":"dome_05","g":"dome","c":"green","p":[[-1.4453,-1.7761,0.0],[-1.6278,-2.0827,0.9342],[-2.0841,-1.2676,0.5774]]},{"n":"dome_06","g":"dome","c":"yellow","p":[[-1.4453,-1.7761,0.0],[-0.6937,-2.0952,0.5774],[-1.6278,-2.0827,0.9342]]},{"n":"dome_07","g":"dome","c":"red","p":[[-1.432,-0.7762,0.0],[-2.0841,-1.2676,0.5774],[-1.6063,-0.4648,0.9342]]},{"n":"dome_08","g":"dome","c":"pink","p":[[-1.6278,-2.0827,0.9342],[-1.7273,-1.2723,1.5115],[-2.0841,-1.2676,0.5774]]},{"n":"dome_09","g":"dome","c":"yellow","p":[[-1.6278,-2.0827,0.9342],[-0.6937,-2.0952,0.5774],[-0.868,-1.7838,1.5115]]},{"n":"dome_10","g":"dome","c":"green","p":[[-1.6278,-2.0827,0.9342],[-0.868,-1.7838,1.5115],[-1.7273,-1.2723,1.5115]]},{"n":"dome_11","g":"dome","c":"purple","p":[[-1.6063,-0.4648,0.9342],[-2.0841,-1.2676,0.5774],[-1.7273,-1.2723,1.5115]]},{"n":"dome_12","g":"dome","c":"yellow","p":[[-1.6063,-0.4648,0.9342],[-1.7273,-1.2723,1.5115],[-0.8547,-0.7839,1.5115]]},{"n":"dome_13","g":"dome","c":"blue","p":[[-0.6722,-0.4773,0.5774],[-0.8547,-0.7839,1.5115],[-0.2159,-1.2924,0.9342]]},{"n":"dome_14","g":"dome","c":"red","p":[[-0.6937,-2.0952,0.5774],[-0.2159,-1.2924,0.9342],[-0.868,-1.7838,1.5115]]},{"n":"dome_15","g":"dome","c":"yellow","p":[[-0.2159,-1.2924,0.9342],[-0.8547,-0.7839,1.5115],[-0.868,-1.7838,1.5115]]},{"n":"dome_16","g":"dome","c":"yellow","p":[[-1.7273,-1.2723,1.5115],[-0.868,-1.7838,1.5115],[-0.8547,-0.7839,1.5115]]}]};
 (function () {
   const stage = document.getElementById('stage');
-  let renderer;
-  try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); }
-  catch (e) { document.getElementById('fail').hidden = false; return; }
-  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
-  stage.prepend(renderer.domElement);
-
-  const V = (p) => new THREE.Vector3(p[0], p[2], -p[1]);   // build space is Z-up
   const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
-  // --- tile mesher: open frame or solid plate from a planar outline
+  // --- small vector kit (plain arrays, Y-up) so the page works with or without WebGL
+  const add = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]], sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const mul = (a, k) => [a[0] * k, a[1] * k, a[2] * k], dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const unit = (a) => mul(a, 1 / Math.hypot(a[0], a[1], a[2]));
+  const V = (p) => [p[0], p[2], -p[1]];                     // build space is Z-up
+
+  // --- tile mesher: open frame or solid plate from a planar outline, as outward-wound polygons
   function meshTile(tile, solid) {
-    const pts = tile.p.map(V), m = pts.length, n = new THREE.Vector3();
-    for (let i = 0; i < m; i++) n.add(pts[i].clone().cross(pts[(i + 1) % m]));
-    n.normalize();
-    const h = n.clone().multiplyScalar(DATA.thick / 2);
+    const pts = tile.p.map(V), m = pts.length;
+    let n = [0, 0, 0];
+    for (let i = 0; i < m; i++) n = add(n, cross(pts[i], pts[(i + 1) % m]));
+    n = unit(n);
+    const h = mul(n, DATA.thick / 2), up = (a) => add(a, h), dn = (a) => sub(a, h), polys = [];
     const inner = pts.map((p, i) => {
-      const e1 = p.clone().sub(pts[(i + m - 1) % m]).normalize(), e2 = pts[(i + 1) % m].clone().sub(p).normalize();
-      const n1 = n.clone().cross(e1), n2 = n.clone().cross(e2);
-      return p.clone().add(n1.clone().add(n2).multiplyScalar(DATA.bar / (1 + n1.dot(n2))));
+      const n1 = cross(n, unit(sub(p, pts[(i + m - 1) % m]))), n2 = cross(n, unit(sub(pts[(i + 1) % m], p)));
+      return add(p, mul(add(n1, n2), DATA.bar / (1 + dot(n1, n2))));
     });
-    const up = (a) => a.clone().add(h), dn = (a) => a.clone().sub(h), out = [];
-    const quad = (a, b, c, d) => out.push(a, b, c, a, c, d);
+    if (solid) { polys.push(pts.map(up)); polys.push(pts.map(dn).reverse()); }
     for (let i = 0; i < m; i++) {
       const j = (i + 1) % m;
-      quad(dn(pts[i]), dn(pts[j]), up(pts[j]), up(pts[i]));
-      if (solid) {
-        if (i > 0 && i < m - 1) { out.push(up(pts[0]), up(pts[i]), up(pts[j])); out.push(dn(pts[0]), dn(pts[j]), dn(pts[i])); }
-      } else {
-        quad(up(pts[i]), up(pts[j]), up(inner[j]), up(inner[i]));
-        quad(dn(pts[j]), dn(pts[i]), dn(inner[i]), dn(inner[j]));
-        quad(dn(inner[j]), dn(inner[i]), up(inner[i]), up(inner[j]));
+      polys.push([dn(pts[i]), dn(pts[j]), up(pts[j]), up(pts[i])]);
+      if (!solid) {
+        polys.push([up(pts[i]), up(pts[j]), up(inner[j]), up(inner[i])]);
+        polys.push([dn(pts[j]), dn(pts[i]), dn(inner[i]), dn(inner[j])]);
+        polys.push([dn(inner[j]), dn(inner[i]), up(inner[i]), up(inner[j])]);
       }
     }
-    const g = new THREE.BufferGeometry().setFromPoints(out);
-    g.computeVertexNormals();
-    return g;
+    return polys;
   }
+  const tiles = DATA.tiles.map((t) => ({ c: t.c, frames: meshTile(t, false), panels: meshTile(t, true) }));
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
-  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  // --- orbit camera shared by both renderers
   const target = V([-0.25, -0.1, 1.05]);
-  controls.target.copy(target); controls.enableDamping = true; controls.dampingFactor = 0.09;
-  controls.minDistance = 2.5; controls.maxDistance = 22; controls.maxPolarAngle = Math.PI * 0.53;
+  const cam = { az: 0, el: 0.4, dist: 9, fov: 36 };
+  const camPos = () => add(target, mul([Math.cos(cam.el) * Math.sin(cam.az), Math.sin(cam.el), Math.cos(cam.el) * Math.cos(cam.az)], cam.dist));
+  let mode = 'frames', W = 1, H = 1, dirty = false, fly = null;
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8fa0, 0.85));
-  const key = new THREE.DirectionalLight(0xffffff, 0.75); key.position.set(4, 9, 6); scene.add(key);
-  const rim = new THREE.DirectionalLight(0xffffff, 0.3); rim.position.set(-6, 3, -5); scene.add(rim);
-
-  const mats = {}, clay = new THREE.MeshStandardMaterial({ roughness: 0.8, side: THREE.DoubleSide, flatShading: true });
-  for (const k in DATA.colors) mats[k] = new THREE.MeshStandardMaterial({
-    color: DATA.colors[k], roughness: 0.35, side: THREE.DoubleSide, flatShading: true });
-
-  const ship = new THREE.Group(); scene.add(ship);
-  const parts = DATA.tiles.map((t) => {
-    const mesh = new THREE.Mesh(undefined, mats[t.c]);
-    mesh.name = t.g + '.' + t.n;
-    mesh.userData = { tile: t, frames: meshTile(t, false), panels: meshTile(t, true) };
-    ship.add(mesh); return mesh;
-  });
-
-  let grid;
-  function paint() {
-    if (grid) scene.remove(grid);
-    grid = new THREE.GridHelper(12, 12, css('--grid'), css('--grid'));
-    grid.material.transparent = true; grid.material.opacity = 0.55; grid.position.set(0, -0.001, 0);
-    scene.add(grid);
-    clay.color.set(css('--clay'));
-    draw();
+  // --- renderer A: WebGL through three.js
+  function makeGL() {
+    if (!window.THREE) return null;
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); } catch (e) { return null; }
+    renderer.setPixelRatio(DPR);
+    const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8fa0, 0.85));
+    const key = new THREE.DirectionalLight(0xffffff, 0.75); key.position.set(4, 9, 6); scene.add(key);
+    const rim = new THREE.DirectionalLight(0xffffff, 0.3); rim.position.set(-6, 3, -5); scene.add(rim);
+    const geo = (polys) => {
+      const a = [];
+      polys.forEach((p) => { for (let i = 1; i < p.length - 1; i++) a.push(...p[0], ...p[i], ...p[i + 1]); });
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.Float32BufferAttribute(a, 3)); g.computeVertexNormals(); return g;
+    };
+    const opt = { roughness: 0.35, side: THREE.DoubleSide, flatShading: true };
+    const mats = {}, clay = new THREE.MeshStandardMaterial(Object.assign({}, opt, { roughness: 0.8 }));
+    for (const k in DATA.colors) mats[k] = new THREE.MeshStandardMaterial(Object.assign({ color: DATA.colors[k] }, opt));
+    const parts = tiles.map((t) => { const m = new THREE.Mesh(undefined, mats[t.c]); m.userData = { c: t.c, frames: geo(t.frames), panels: geo(t.panels) }; scene.add(m); return m; });
+    let grid;
+    return {
+      el: renderer.domElement,
+      theme() {
+        if (grid) scene.remove(grid);
+        grid = new THREE.GridHelper(12, 12, css('--grid'), css('--grid'));
+        grid.material.transparent = true; grid.material.opacity = 0.55; grid.position.y = -0.001; scene.add(grid);
+        clay.color.set(css('--clay'));
+      },
+      mode() { parts.forEach((m) => { m.geometry = mode === 'frames' ? m.userData.frames : m.userData.panels; m.material = mode === 'clay' ? clay : mats[m.userData.c]; }); },
+      size() { renderer.setSize(W, H, false); camera.aspect = W / H; },
+      draw() { camera.fov = cam.fov; camera.updateProjectionMatrix(); camera.position.fromArray(camPos()); camera.lookAt(target[0], target[1], target[2]); renderer.render(scene, camera); }
+    };
   }
 
-  function setMode(mode) {
-    parts.forEach((m) => {
-      m.geometry = mode === 'frames' ? m.userData.frames : m.userData.panels;
-      m.material = mode === 'clay' ? clay : mats[m.userData.tile.c];
-    });
-    document.querySelectorAll('[data-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
-    draw();
+  // --- renderer B: depth-sorted 2D canvas, used when WebGL or the library is unavailable
+  function make2D() {
+    const el = document.createElement('canvas'), ctx = el.getContext('2d');
+    const rgb = (hex) => { const c = document.createElement('canvas').getContext('2d'); c.fillStyle = hex; const s = c.fillStyle; return [1, 3, 5].map((i) => parseInt(s.slice(i, i + 2), 16)); };
+    const cols = {}; for (const k in DATA.colors) cols[k] = rgb(DATA.colors[k]);
+    let clay = [150, 160, 175], gridCol = '#bbb';
+    const light = unit([4, 9, 6]);
+    return {
+      el,
+      theme() { clay = rgb(css('--clay')); gridCol = css('--grid'); },
+      mode() {},
+      size() { el.width = W * DPR; el.height = H * DPR; },
+      draw() {
+        const pos = camPos(), f = unit(sub(target, pos)), r = unit(cross(f, [0, 1, 0])), u = cross(r, f);
+        const F = (H / 2) / Math.tan(cam.fov * Math.PI / 360);
+        const proj = (p) => { const d = sub(p, pos), z = dot(d, f); return z < 0.2 ? null : [W / 2 + dot(d, r) / z * F, H / 2 - dot(d, u) / z * F]; };
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
+        ctx.strokeStyle = gridCol; ctx.globalAlpha = 0.55; ctx.lineWidth = 1; ctx.beginPath();
+        for (let i = -6; i <= 6; i++) [[[i, 0, -6], [i, 0, 6]], [[-6, 0, i], [6, 0, i]]].forEach(([a, b]) => { const A = proj(a), B = proj(b); if (A && B) { ctx.moveTo(A[0], A[1]); ctx.lineTo(B[0], B[1]); } });
+        ctx.stroke(); ctx.globalAlpha = 1;
+        const list = [];
+        tiles.forEach((t) => (mode === 'frames' ? t.frames : t.panels).forEach((p) => {
+          let c = [0, 0, 0]; p.forEach((v) => { c = add(c, v); }); c = mul(c, 1 / p.length);
+          let n = unit(cross(sub(p[1], p[0]), sub(p[2], p[0])));
+          if (dot(n, sub(pos, c)) < 0) n = mul(n, -1);
+          list.push({ p, d: dot(sub(c, pos), f), k: 0.58 + 0.42 * Math.max(0, dot(n, light)), col: mode === 'clay' ? clay : cols[t.c] });
+        }));
+        list.sort((a, b) => b.d - a.d);
+        ctx.lineJoin = 'round'; ctx.lineWidth = 0.6;
+        list.forEach((q) => {
+          const s = q.p.map(proj); if (s.some((x) => !x)) return;
+          ctx.beginPath(); s.forEach((x, i) => (i ? ctx.lineTo(x[0], x[1]) : ctx.moveTo(x[0], x[1]))); ctx.closePath();
+          ctx.fillStyle = ctx.strokeStyle = 'rgb(' + q.col.map((v) => Math.round(v * q.k)).join(',') + ')'; ctx.fill(); ctx.stroke();
+        });
+      }
+    };
   }
 
+  const R = makeGL() || make2D();
+  stage.prepend(R.el);
+  function invalidate() { if (dirty) return; dirty = true; requestAnimationFrame(frame); }
+  function frame(now) {
+    dirty = false;
+    if (fly) {
+      const k = Math.min(1, (now - fly.t0) / 650), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      ['az', 'el', 'dist'].forEach((a) => { cam[a] = fly.from[a] + (fly.to[a] - fly.from[a]) * e; });
+      if (k >= 1) fly = null; else invalidate();
+    }
+    R.draw();
+  }
+
+  function setMode(m) {
+    mode = m; R.mode();
+    document.querySelectorAll('[data-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === m)));
+    invalidate();
+  }
   // Camera stations, as offsets from the target in build space (x nose->tail, y dome->wing, z up).
   const VIEWS = { wing: [1.6, 7.6, 3.4], dome: [-1.2, -8.2, 2.0], nose: [-7.6, -2.6, 2.9], tail: [6.0, -5.6, 1.6], top: [0.01, -1.2, 10.5], home: [-5.2, -6.4, 4.4] };
-  let fly = null;
   function setView(name, instant) {
-    const to = target.clone().add(V(VIEWS[name]).sub(V([0, 0, 0])));
-    if (instant || matchMedia('(prefers-reduced-motion: reduce)').matches) { camera.position.copy(to); controls.target.copy(target); controls.update(); draw(); return; }
-    fly = { from: camera.position.clone(), to, tf: controls.target.clone(), t0: performance.now() };
-    loop();
+    const o = V(VIEWS[name]), dist = Math.hypot(o[0], o[1], o[2]);
+    const to = { az: Math.atan2(o[0], o[2]), el: Math.asin(o[1] / dist), dist };
+    if (instant || matchMedia('(prefers-reduced-motion: reduce)').matches) { Object.assign(cam, to); fly = null; }
+    else {
+      to.az = cam.az + Math.atan2(Math.sin(to.az - cam.az), Math.cos(to.az - cam.az));
+      fly = { from: { az: cam.az, el: cam.el, dist: cam.dist }, to, t0: performance.now() };
+    }
+    invalidate();
   }
 
-  let running = false, idleAt = 0;
-  function draw() { renderer.render(scene, camera); }
-  function loop() {
-    if (running) return; running = true;
-    (function tick(now) {
-      if (fly) {
-        const k = Math.min(1, (now - fly.t0) / 650), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
-        camera.position.lerpVectors(fly.from, fly.to, e); controls.target.lerpVectors(fly.tf, target, e);
-        if (k >= 1) fly = null; idleAt = now + 400;
-      }
-      controls.update(); draw();
-      if (now < idleAt || fly) requestAnimationFrame(tick); else running = false;
-    })(performance.now());
-  }
-  controls.addEventListener('start', () => { fly = null; idleAt = Infinity; loop(); });
-  controls.addEventListener('end', () => { idleAt = performance.now() + 1200; });
-  renderer.domElement.addEventListener('wheel', () => { idleAt = performance.now() + 1200; loop(); }, { passive: true });
+  // --- touch, pen and mouse: one pointer orbits, two pinch; wheel zooms
+  const ptrs = new Map(); let pinch = 0;
+  const clampCam = () => { cam.el = Math.max(-0.05, Math.min(1.5, cam.el)); cam.dist = Math.max(3, Math.min(22, cam.dist)); };
+  const spread = () => { const a = [...ptrs.values()]; return Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y); };
+  R.el.addEventListener('pointerdown', (e) => { try { R.el.setPointerCapture(e.pointerId); } catch (_) {} ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY }); if (ptrs.size === 2) pinch = spread(); fly = null; });
+  R.el.addEventListener('pointermove', (e) => {
+    const p = ptrs.get(e.pointerId); if (!p) return;
+    const dx = e.clientX - p.x, dy = e.clientY - p.y; p.x = e.clientX; p.y = e.clientY;
+    if (ptrs.size === 1) { cam.az -= dx * 0.008; cam.el += dy * 0.008; }
+    else if (ptrs.size === 2) { const s = spread(); if (pinch > 0 && s > 0) cam.dist *= pinch / s; pinch = s; }
+    clampCam(); invalidate();
+  });
+  const lift = (e) => { ptrs.delete(e.pointerId); pinch = 0; };
+  R.el.addEventListener('pointerup', lift); R.el.addEventListener('pointercancel', lift);
+  R.el.addEventListener('wheel', (e) => { e.preventDefault(); fly = null; cam.dist *= Math.exp(e.deltaY * 0.0012); clampCam(); invalidate(); }, { passive: false });
 
   function resize() {
-    const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return;
-    renderer.setSize(w, h, false); camera.aspect = w / h;
-    camera.fov = w < h ? 52 : 36; camera.updateProjectionMatrix(); draw();
+    W = stage.clientWidth; H = stage.clientHeight; if (!W || !H) return;
+    cam.fov = W < H ? 54 : 36; R.size(); R.draw();
   }
+  function theme() { R.theme(); invalidate(); }
   new ResizeObserver(resize).observe(stage);
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);
-  new MutationObserver(paint).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', theme);
+  new MutationObserver(theme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   document.querySelectorAll('[data-mode]').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
   document.querySelectorAll('[data-view]').forEach((b) => b.addEventListener('click', () => setView(b.dataset.view)));
 
-  const box = new THREE.Box3().setFromPoints(DATA.tiles.flatMap((t) => t.p.map(V))), s = box.getSize(new THREE.Vector3());
+  const all = DATA.tiles.flatMap((t) => t.p), span = (i) => (Math.max(...all.map((p) => p[i])) - Math.min(...all.map((p) => p[i]))).toFixed(1);
   document.getElementById('count').textContent = DATA.tiles.length;
-  document.getElementById('size').textContent = [s.x, s.z, s.y].map((v) => v.toFixed(1)).join(' × ');
+  document.getElementById('size').textContent = [span(0), span(1), span(2)].join(' × ');
 
-  setMode('frames'); setView('home', true); resize(); paint();
-  window.tileShip = { setMode, setView };
+  R.theme(); setMode('frames'); setView('home', true); resize();
+  window.tileShip = { setMode, setView, renderer: window.THREE && R.el.getContext('2d') === null ? 'webgl' : '2d' };
 })();
 </script>
