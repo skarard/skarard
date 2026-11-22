@@ -3092,11 +3092,11 @@
    "group": "spire",
    "edge": 1,
    "slot": 0,
-   "status": "loose",
+   "status": "mated",
    "mates": [
     "tail_pod_down_wing"
    ],
-   "gap": 0.2681,
+   "gap": 0.0063,
    "pos": [
     0.375,
     0.375,
@@ -3123,11 +3123,11 @@
    "group": "spire",
    "edge": 2,
    "slot": 0,
-   "status": "loose",
+   "status": "mated",
    "mates": [
     "nose_pod_down_wing"
    ],
-   "gap": 0.2681,
+   "gap": 0.0063,
    "pos": [
     -0.375,
     0.375,
@@ -3187,11 +3187,11 @@
    "group": "spire",
    "edge": 1,
    "slot": 0,
-   "status": "loose",
+   "status": "mated",
    "mates": [
     "tail_pod_down_dome"
    ],
-   "gap": 0.2681,
+   "gap": 0.0063,
    "pos": [
     0.375,
     -0.375,
@@ -3218,11 +3218,11 @@
    "group": "spire",
    "edge": 2,
    "slot": 0,
-   "status": "loose",
+   "status": "mated",
    "mates": [
     "nose_pod_down_dome"
    ],
-   "gap": 0.2681,
+   "gap": 0.0063,
    "pos": [
     -0.375,
     -0.375,
@@ -3242,1257 +3242,6 @@
     0.0,
     -0.9661,
     0.2582
-   ]
-  },
-  {
-   "tile": "nose_pod_end",
-   "group": "nose_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "nose_cube_front",
-    "nose_cube_roof"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -1.5,
-    0.0,
-    1.0
-   ],
-   "along": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "outward": [
-    -0.2,
-    0.0,
-    -0.9798
-   ],
-   "normal": [
-    0.9798,
-    0.0,
-    -0.2
-   ]
-  },
-  {
-   "tile": "nose_pod_end",
-   "group": "nose_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "nose_pod_up_wing"
-   ],
-   "gap": 0.1794,
-   "pos": [
-    -1.4,
-    0.5,
-    1.4899
-   ],
-   "along": [
-    0.2,
-    0.0,
-    0.9798
-   ],
-   "outward": [
-    -0.0,
-    1.0,
-    0.0
-   ],
-   "normal": [
-    0.9798,
-    0.0,
-    -0.2
-   ]
-  },
-  {
-   "tile": "nose_pod_end",
-   "group": "nose_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "nose_pod_roof"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -1.3,
-    0.0,
-    1.9798
-   ],
-   "along": [
-    0.0,
-    -1.0,
-    0.0
-   ],
-   "outward": [
-    0.2,
-    0.0,
-    0.9798
-   ],
-   "normal": [
-    0.9798,
-    0.0,
-    -0.2
-   ]
-  },
-  {
-   "tile": "nose_pod_end",
-   "group": "nose_pod",
-   "edge": 3,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "nose_pod_up_dome"
-   ],
-   "gap": 0.1794,
-   "pos": [
-    -1.4,
-    -0.5,
-    1.4899
-   ],
-   "along": [
-    -0.2,
-    0.0,
-    -0.9798
-   ],
-   "outward": [
-    0.0,
-    -1.0,
-    -0.0
-   ],
-   "normal": [
-    0.9798,
-    0.0,
-    -0.2
-   ]
-  },
-  {
-   "tile": "nose_pod_roof",
-   "group": "nose_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "nose_pod_down_dome"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -0.8,
-    -0.5,
-    1.9798
-   ],
-   "along": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    0.0,
-    -1.0,
-    0.0
-   ],
-   "normal": [
-    0.0,
-    0.0,
-    1.0
-   ]
-  },
-  {
-   "tile": "nose_pod_roof",
-   "group": "nose_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "open",
-   "mates": [],
-   "gap": 0.6,
-   "pos": [
-    -0.3,
-    0.0,
-    1.9798
-   ],
-   "along": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "outward": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "normal": [
-    0.0,
-    0.0,
-    1.0
-   ]
-  },
-  {
-   "tile": "nose_pod_roof",
-   "group": "nose_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "nose_pod_down_wing"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -0.8,
-    0.5,
-    1.9798
-   ],
-   "along": [
-    -1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    0.0,
-    1.0,
-    -0.0
-   ],
-   "normal": [
-    0.0,
-    0.0,
-    1.0
-   ]
-  },
-  {
-   "tile": "nose_pod_roof",
-   "group": "nose_pod",
-   "edge": 3,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "nose_pod_end"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -1.3,
-    0.0,
-    1.9798
-   ],
-   "along": [
-    0.0,
-    -1.0,
-    0.0
-   ],
-   "outward": [
-    -1.0,
-    0.0,
-    0.0
-   ],
-   "normal": [
-    0.0,
-    0.0,
-    1.0
-   ]
-  },
-  {
-   "tile": "nose_pod_up_wing",
-   "group": "nose_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "nose_cube_roof",
-    "nose_cube_side_wing"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -1.0,
-    0.5,
-    1.0
-   ],
-   "along": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    0.0,
-    0.1736,
-    -0.9848
-   ],
-   "normal": [
-    0.0,
-    -0.9848,
-    -0.1736
-   ]
-  },
-  {
-   "tile": "nose_pod_up_wing",
-   "group": "nose_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "nose_pod_down_wing"
-   ],
-   "gap": 0.2718,
-   "pos": [
-    -0.75,
-    0.4248,
-    1.4264
-   ],
-   "along": [
-    -0.5,
-    -0.1504,
-    0.8529
-   ],
-   "outward": [
-    0.866,
-    -0.0868,
-    0.4924
-   ],
-   "normal": [
-    0.0,
-    -0.9848,
-    -0.1736
-   ]
-  },
-  {
-   "tile": "nose_pod_up_wing",
-   "group": "nose_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "nose_pod_down_wing",
-    "nose_pod_end"
-   ],
-   "gap": 0.1794,
-   "pos": [
-    -1.25,
-    0.4248,
-    1.4264
-   ],
-   "along": [
-    -0.5,
-    0.1504,
-    -0.8529
-   ],
-   "outward": [
-    -0.866,
-    -0.0868,
-    0.4924
-   ],
-   "normal": [
-    0.0,
-    -0.9848,
-    -0.1736
-   ]
-  },
-  {
-   "tile": "nose_pod_up_dome",
-   "group": "nose_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "nose_cube_roof",
-    "nose_cube_side_dome"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -1.0,
-    -0.5,
-    1.0
-   ],
-   "along": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    0.0,
-    -0.1736,
-    -0.9848
-   ],
-   "normal": [
-    0.0,
-    -0.9848,
-    0.1736
-   ]
-  },
-  {
-   "tile": "nose_pod_up_dome",
-   "group": "nose_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "nose_pod_down_dome"
-   ],
-   "gap": 0.2718,
-   "pos": [
-    -0.75,
-    -0.4248,
-    1.4264
-   ],
-   "along": [
-    -0.5,
-    0.1504,
-    0.8529
-   ],
-   "outward": [
-    0.866,
-    0.0868,
-    0.4924
-   ],
-   "normal": [
-    0.0,
-    -0.9848,
-    0.1736
-   ]
-  },
-  {
-   "tile": "nose_pod_up_dome",
-   "group": "nose_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "dome_12",
-    "nose_pod_down_dome",
-    "nose_pod_end"
-   ],
-   "gap": 0.1794,
-   "pos": [
-    -1.25,
-    -0.4248,
-    1.4264
-   ],
-   "along": [
-    -0.5,
-    -0.1504,
-    -0.8529
-   ],
-   "outward": [
-    -0.866,
-    0.0868,
-    0.4924
-   ],
-   "normal": [
-    0.0,
-    -0.9848,
-    0.1736
-   ]
-  },
-  {
-   "tile": "nose_pod_down_wing",
-   "group": "nose_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "nose_pod_roof"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -0.8,
-    0.5,
-    1.9798
-   ],
-   "along": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    0.0,
-    -0.1392,
-    0.9903
-   ],
-   "normal": [
-    0.0,
-    0.9903,
-    0.1392
-   ]
-  },
-  {
-   "tile": "nose_pod_down_wing",
-   "group": "nose_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "nose_pod_up_wing",
-    "spire_wing"
-   ],
-   "gap": 0.2681,
-   "pos": [
-    -0.55,
-    0.5603,
-    1.551
-   ],
-   "along": [
-    -0.5,
-    0.1205,
-    -0.8576
-   ],
-   "outward": [
-    0.866,
-    0.0696,
-    -0.4951
-   ],
-   "normal": [
-    0.0,
-    0.9903,
-    0.1392
-   ]
-  },
-  {
-   "tile": "nose_pod_down_wing",
-   "group": "nose_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "nose_pod_up_wing"
-   ],
-   "gap": 0.2718,
-   "pos": [
-    -1.05,
-    0.5603,
-    1.551
-   ],
-   "along": [
-    -0.5,
-    -0.1205,
-    0.8576
-   ],
-   "outward": [
-    -0.866,
-    0.0696,
-    -0.4951
-   ],
-   "normal": [
-    0.0,
-    0.9903,
-    0.1392
-   ]
-  },
-  {
-   "tile": "nose_pod_down_dome",
-   "group": "nose_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "nose_pod_roof"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -0.8,
-    -0.5,
-    1.9798
-   ],
-   "along": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    -0.0,
-    0.1392,
-    0.9903
-   ],
-   "normal": [
-    0.0,
-    0.9903,
-    -0.1392
-   ]
-  },
-  {
-   "tile": "nose_pod_down_dome",
-   "group": "nose_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "nose_pod_up_dome",
-    "spire_dome"
-   ],
-   "gap": 0.2681,
-   "pos": [
-    -0.55,
-    -0.5603,
-    1.551
-   ],
-   "along": [
-    -0.5,
-    -0.1205,
-    -0.8576
-   ],
-   "outward": [
-    0.866,
-    -0.0696,
-    -0.4951
-   ],
-   "normal": [
-    0.0,
-    0.9903,
-    -0.1392
-   ]
-  },
-  {
-   "tile": "nose_pod_down_dome",
-   "group": "nose_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "nose_pod_up_dome"
-   ],
-   "gap": 0.2718,
-   "pos": [
-    -1.05,
-    -0.5603,
-    1.551
-   ],
-   "along": [
-    -0.5,
-    0.1205,
-    0.8576
-   ],
-   "outward": [
-    -0.866,
-    -0.0696,
-    -0.4951
-   ],
-   "normal": [
-    0.0,
-    0.9903,
-    -0.1392
-   ]
-  },
-  {
-   "tile": "tail_pod_end",
-   "group": "tail_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "tail_cube_back",
-    "tail_cube_roof"
-   ],
-   "gap": 0.0,
-   "pos": [
-    1.5,
-    0.0,
-    1.0
-   ],
-   "along": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "outward": [
-    0.2,
-    0.0,
-    -0.9798
-   ],
-   "normal": [
-    0.9798,
-    0.0,
-    0.2
-   ]
-  },
-  {
-   "tile": "tail_pod_end",
-   "group": "tail_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "tail_pod_up_wing"
-   ],
-   "gap": 0.1794,
-   "pos": [
-    1.4,
-    0.5,
-    1.4899
-   ],
-   "along": [
-    -0.2,
-    0.0,
-    0.9798
-   ],
-   "outward": [
-    0.0,
-    1.0,
-    -0.0
-   ],
-   "normal": [
-    0.9798,
-    0.0,
-    0.2
-   ]
-  },
-  {
-   "tile": "tail_pod_end",
-   "group": "tail_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "tail_pod_roof"
-   ],
-   "gap": 0.0,
-   "pos": [
-    1.3,
-    0.0,
-    1.9798
-   ],
-   "along": [
-    0.0,
-    -1.0,
-    0.0
-   ],
-   "outward": [
-    -0.2,
-    0.0,
-    0.9798
-   ],
-   "normal": [
-    0.9798,
-    0.0,
-    0.2
-   ]
-  },
-  {
-   "tile": "tail_pod_end",
-   "group": "tail_pod",
-   "edge": 3,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "tail_pod_up_dome"
-   ],
-   "gap": 0.1794,
-   "pos": [
-    1.4,
-    -0.5,
-    1.4899
-   ],
-   "along": [
-    0.2,
-    0.0,
-    -0.9798
-   ],
-   "outward": [
-    0.0,
-    -1.0,
-    0.0
-   ],
-   "normal": [
-    0.9798,
-    0.0,
-    0.2
-   ]
-  },
-  {
-   "tile": "tail_pod_roof",
-   "group": "tail_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "tail_pod_down_dome"
-   ],
-   "gap": 0.0,
-   "pos": [
-    0.8,
-    -0.5,
-    1.9798
-   ],
-   "along": [
-    -1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    -0.0,
-    -1.0,
-    -0.0
-   ],
-   "normal": [
-    0.0,
-    0.0,
-    -1.0
-   ]
-  },
-  {
-   "tile": "tail_pod_roof",
-   "group": "tail_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "open",
-   "mates": [],
-   "gap": 0.6,
-   "pos": [
-    0.3,
-    0.0,
-    1.9798
-   ],
-   "along": [
-    0.0,
-    1.0,
-    0.0
-   ],
-   "outward": [
-    -1.0,
-    0.0,
-    0.0
-   ],
-   "normal": [
-    0.0,
-    0.0,
-    -1.0
-   ]
-  },
-  {
-   "tile": "tail_pod_roof",
-   "group": "tail_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "tail_pod_down_wing"
-   ],
-   "gap": 0.0,
-   "pos": [
-    0.8,
-    0.5,
-    1.9798
-   ],
-   "along": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    -0.0,
-    1.0,
-    0.0
-   ],
-   "normal": [
-    0.0,
-    0.0,
-    -1.0
-   ]
-  },
-  {
-   "tile": "tail_pod_roof",
-   "group": "tail_pod",
-   "edge": 3,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "tail_pod_end"
-   ],
-   "gap": 0.0,
-   "pos": [
-    1.3,
-    0.0,
-    1.9798
-   ],
-   "along": [
-    0.0,
-    -1.0,
-    0.0
-   ],
-   "outward": [
-    1.0,
-    0.0,
-    0.0
-   ],
-   "normal": [
-    0.0,
-    0.0,
-    -1.0
-   ]
-  },
-  {
-   "tile": "tail_pod_up_wing",
-   "group": "tail_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "tail_cube_roof",
-    "tail_cube_side_wing"
-   ],
-   "gap": 0.0,
-   "pos": [
-    1.0,
-    0.5,
-    1.0
-   ],
-   "along": [
-    -1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    0.0,
-    0.1736,
-    -0.9848
-   ],
-   "normal": [
-    0.0,
-    0.9848,
-    0.1736
-   ]
-  },
-  {
-   "tile": "tail_pod_up_wing",
-   "group": "tail_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "tail_pod_down_wing"
-   ],
-   "gap": 0.2718,
-   "pos": [
-    0.75,
-    0.4248,
-    1.4264
-   ],
-   "along": [
-    0.5,
-    -0.1504,
-    0.8529
-   ],
-   "outward": [
-    -0.866,
-    -0.0868,
-    0.4924
-   ],
-   "normal": [
-    0.0,
-    0.9848,
-    0.1736
-   ]
-  },
-  {
-   "tile": "tail_pod_up_wing",
-   "group": "tail_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "tail_pod_down_wing",
-    "tail_pod_end"
-   ],
-   "gap": 0.1794,
-   "pos": [
-    1.25,
-    0.4248,
-    1.4264
-   ],
-   "along": [
-    0.5,
-    0.1504,
-    -0.8529
-   ],
-   "outward": [
-    0.866,
-    -0.0868,
-    0.4924
-   ],
-   "normal": [
-    0.0,
-    0.9848,
-    0.1736
-   ]
-  },
-  {
-   "tile": "tail_pod_up_dome",
-   "group": "tail_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "tail_cube_roof",
-    "tail_cube_side_dome"
-   ],
-   "gap": 0.0,
-   "pos": [
-    1.0,
-    -0.5,
-    1.0
-   ],
-   "along": [
-    -1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    -0.0,
-    -0.1736,
-    -0.9848
-   ],
-   "normal": [
-    0.0,
-    0.9848,
-    -0.1736
-   ]
-  },
-  {
-   "tile": "tail_pod_up_dome",
-   "group": "tail_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "tail_pod_down_dome"
-   ],
-   "gap": 0.2718,
-   "pos": [
-    0.75,
-    -0.4248,
-    1.4264
-   ],
-   "along": [
-    0.5,
-    0.1504,
-    0.8529
-   ],
-   "outward": [
-    -0.866,
-    0.0868,
-    0.4924
-   ],
-   "normal": [
-    0.0,
-    0.9848,
-    -0.1736
-   ]
-  },
-  {
-   "tile": "tail_pod_up_dome",
-   "group": "tail_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "tail_pod_down_dome",
-    "tail_pod_end"
-   ],
-   "gap": 0.1794,
-   "pos": [
-    1.25,
-    -0.4248,
-    1.4264
-   ],
-   "along": [
-    0.5,
-    -0.1504,
-    -0.8529
-   ],
-   "outward": [
-    0.866,
-    0.0868,
-    0.4924
-   ],
-   "normal": [
-    0.0,
-    0.9848,
-    -0.1736
-   ]
-  },
-  {
-   "tile": "tail_pod_down_wing",
-   "group": "tail_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "tail_pod_roof"
-   ],
-   "gap": 0.0,
-   "pos": [
-    0.8,
-    0.5,
-    1.9798
-   ],
-   "along": [
-    -1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    0.0,
-    -0.1392,
-    0.9903
-   ],
-   "normal": [
-    0.0,
-    -0.9903,
-    -0.1392
-   ]
-  },
-  {
-   "tile": "tail_pod_down_wing",
-   "group": "tail_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "spire_wing",
-    "tail_pod_up_wing"
-   ],
-   "gap": 0.2681,
-   "pos": [
-    0.55,
-    0.5603,
-    1.551
-   ],
-   "along": [
-    0.5,
-    0.1205,
-    -0.8576
-   ],
-   "outward": [
-    -0.866,
-    0.0696,
-    -0.4951
-   ],
-   "normal": [
-    0.0,
-    -0.9903,
-    -0.1392
-   ]
-  },
-  {
-   "tile": "tail_pod_down_wing",
-   "group": "tail_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "tail_pod_up_wing"
-   ],
-   "gap": 0.2718,
-   "pos": [
-    1.05,
-    0.5603,
-    1.551
-   ],
-   "along": [
-    0.5,
-    -0.1205,
-    0.8576
-   ],
-   "outward": [
-    0.866,
-    0.0696,
-    -0.4951
-   ],
-   "normal": [
-    0.0,
-    -0.9903,
-    -0.1392
-   ]
-  },
-  {
-   "tile": "tail_pod_down_dome",
-   "group": "tail_pod",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "tail_pod_roof"
-   ],
-   "gap": 0.0,
-   "pos": [
-    0.8,
-    -0.5,
-    1.9798
-   ],
-   "along": [
-    -1.0,
-    0.0,
-    0.0
-   ],
-   "outward": [
-    0.0,
-    0.1392,
-    0.9903
-   ],
-   "normal": [
-    0.0,
-    -0.9903,
-    0.1392
-   ]
-  },
-  {
-   "tile": "tail_pod_down_dome",
-   "group": "tail_pod",
-   "edge": 1,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "spire_dome",
-    "tail_pod_up_dome"
-   ],
-   "gap": 0.2681,
-   "pos": [
-    0.55,
-    -0.5603,
-    1.551
-   ],
-   "along": [
-    0.5,
-    -0.1205,
-    -0.8576
-   ],
-   "outward": [
-    -0.866,
-    -0.0696,
-    -0.4951
-   ],
-   "normal": [
-    0.0,
-    -0.9903,
-    0.1392
-   ]
-  },
-  {
-   "tile": "tail_pod_down_dome",
-   "group": "tail_pod",
-   "edge": 2,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "tail_pod_up_dome"
-   ],
-   "gap": 0.2718,
-   "pos": [
-    1.05,
-    -0.5603,
-    1.551
-   ],
-   "along": [
-    0.5,
-    0.1205,
-    0.8576
-   ],
-   "outward": [
-    0.866,
-    -0.0696,
-    -0.4951
-   ],
-   "normal": [
-    0.0,
-    -0.9903,
-    0.1392
    ]
   },
   {
@@ -5394,11 +4143,9 @@
    "group": "dome",
    "edge": 2,
    "slot": 0,
-   "status": "mated",
-   "mates": [
-    "dome_12"
-   ],
-   "gap": 0.0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.4838,
    "pos": [
     -1.6668,
     -0.8686,
@@ -5418,99 +4165,6 @@
     -0.8679,
     0.3684,
     0.3333
-   ]
-  },
-  {
-   "tile": "dome_12",
-   "group": "dome",
-   "edge": 0,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "dome_11"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -1.6668,
-    -0.8686,
-    1.2228
-   ],
-   "along": [
-    -0.121,
-    -0.8075,
-    0.5774
-   ],
-   "outward": [
-    -0.9377,
-    -0.0978,
-    -0.3333
-   ],
-   "normal": [
-    -0.3256,
-    0.5817,
-    0.7454
-   ]
-  },
-  {
-   "tile": "dome_12",
-   "group": "dome",
-   "edge": 1,
-   "slot": 0,
-   "status": "mated",
-   "mates": [
-    "dome_16"
-   ],
-   "gap": 0.0,
-   "pos": [
-    -1.291,
-    -1.0281,
-    1.5115
-   ],
-   "along": [
-    0.8726,
-    0.4885,
-    0.0
-   ],
-   "outward": [
-    0.3641,
-    -0.6504,
-    0.6667
-   ],
-   "normal": [
-    -0.3256,
-    0.5817,
-    0.7454
-   ]
-  },
-  {
-   "tile": "dome_12",
-   "group": "dome",
-   "edge": 2,
-   "slot": 0,
-   "status": "loose",
-   "mates": [
-    "nose_pod_up_dome"
-   ],
-   "gap": 0.2857,
-   "pos": [
-    -1.2305,
-    -0.6244,
-    1.2228
-   ],
-   "along": [
-    -0.7516,
-    0.319,
-    -0.5774
-   ],
-   "outward": [
-    0.5737,
-    0.7482,
-    -0.3333
-   ],
-   "normal": [
-    -0.3256,
-    0.5817,
-    0.7454
    ]
   },
   {
@@ -5764,11 +4418,9 @@
    "group": "dome",
    "edge": 2,
    "slot": 0,
-   "status": "mated",
-   "mates": [
-    "dome_12"
-   ],
-   "gap": 0.0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.3631,
    "pos": [
     -1.291,
     -1.0281,
@@ -5788,6 +4440,1248 @@
     -0.0,
     -0.0,
     1.0
+   ]
+  },
+  {
+   "tile": "tail_pod_end",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_back",
+    "tail_cube_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    0.3222,
+    0.0,
+    -0.9467
+   ],
+   "normal": [
+    0.9467,
+    0.0,
+    0.3222
+   ]
+  },
+  {
+   "tile": "tail_pod_end",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_up_wing"
+   ],
+   "gap": 0.2245,
+   "pos": [
+    1.3389,
+    0.5,
+    1.4733
+   ],
+   "along": [
+    -0.3222,
+    0.0,
+    0.9467
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "normal": [
+    0.9467,
+    0.0,
+    0.3222
+   ]
+  },
+  {
+   "tile": "tail_pod_end",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.1778,
+    0.0,
+    1.9467
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -0.3222,
+    0.0,
+    0.9467
+   ],
+   "normal": [
+    0.9467,
+    0.0,
+    0.3222
+   ]
+  },
+  {
+   "tile": "tail_pod_end",
+   "group": "tail_pod",
+   "edge": 3,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_up_dome"
+   ],
+   "gap": 0.2245,
+   "pos": [
+    1.3389,
+    -0.5,
+    1.4733
+   ],
+   "along": [
+    0.3222,
+    0.0,
+    -0.9467
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    0.9467,
+    0.0,
+    0.3222
+   ]
+  },
+  {
+   "tile": "tail_pod_roof",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_end"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.1778,
+    0.0,
+    1.9467
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    0.9845,
+    0.0,
+    -0.1754
+   ],
+   "normal": [
+    0.1754,
+    0.0,
+    0.9845
+   ]
+  },
+  {
+   "tile": "tail_pod_roof",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_down_wing"
+   ],
+   "gap": 0.1987,
+   "pos": [
+    0.6856,
+    0.5,
+    2.0344
+   ],
+   "along": [
+    -0.9845,
+    0.0,
+    0.1754
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "normal": [
+    0.1754,
+    0.0,
+    0.9845
+   ]
+  },
+  {
+   "tile": "tail_pod_roof",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.3867,
+   "pos": [
+    0.1934,
+    0.0,
+    2.1221
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -0.9845,
+    0.0,
+    0.1754
+   ],
+   "normal": [
+    0.1754,
+    0.0,
+    0.9845
+   ]
+  },
+  {
+   "tile": "tail_pod_roof",
+   "group": "tail_pod",
+   "edge": 3,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_down_dome"
+   ],
+   "gap": 0.1987,
+   "pos": [
+    0.6856,
+    -0.5,
+    2.0344
+   ],
+   "along": [
+    0.9845,
+    0.0,
+    -0.1754
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    0.1754,
+    0.0,
+    0.9845
+   ]
+  },
+  {
+   "tile": "tail_pod_up_wing",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_roof",
+    "tail_cube_side_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    -0.4352,
+    -0.9003
+   ],
+   "normal": [
+    0.0,
+    0.9003,
+    -0.4352
+   ]
+  },
+  {
+   "tile": "tail_pod_up_wing",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_down_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    0.6885,
+    1.3898
+   ],
+   "along": [
+    0.5,
+    0.3769,
+    0.7797
+   ],
+   "outward": [
+    -0.866,
+    0.2176,
+    0.4502
+   ],
+   "normal": [
+    0.0,
+    0.9003,
+    -0.4352
+   ]
+  },
+  {
+   "tile": "tail_pod_up_wing",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_end"
+   ],
+   "gap": 0.2245,
+   "pos": [
+    1.25,
+    0.6885,
+    1.3898
+   ],
+   "along": [
+    0.5,
+    -0.3769,
+    -0.7797
+   ],
+   "outward": [
+    0.866,
+    0.2176,
+    0.4502
+   ],
+   "normal": [
+    0.0,
+    0.9003,
+    -0.4352
+   ]
+  },
+  {
+   "tile": "tail_pod_down_wing",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "spire_wing"
+   ],
+   "gap": 0.0063,
+   "pos": [
+    0.3721,
+    0.3699,
+    1.4655
+   ],
+   "along": [
+    -0.2557,
+    -0.2602,
+    0.9311
+   ],
+   "outward": [
+    -0.725,
+    -0.5855,
+    -0.3628
+   ],
+   "normal": [
+    -0.6395,
+    0.7678,
+    0.039
+   ]
+  },
+  {
+   "tile": "tail_pod_down_wing",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_roof"
+   ],
+   "gap": 0.1987,
+   "pos": [
+    0.6221,
+    0.5583,
+    1.8554
+   ],
+   "along": [
+    0.7557,
+    0.6372,
+    -0.1514
+   ],
+   "outward": [
+    0.141,
+    0.0674,
+    0.9877
+   ],
+   "normal": [
+    -0.6395,
+    0.7678,
+    0.039
+   ]
+  },
+  {
+   "tile": "tail_pod_down_wing",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_up_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    0.6885,
+    1.3898
+   ],
+   "along": [
+    -0.5,
+    -0.3769,
+    -0.7797
+   ],
+   "outward": [
+    0.5839,
+    0.5181,
+    -0.6249
+   ],
+   "normal": [
+    -0.6395,
+    0.7678,
+    0.039
+   ]
+  },
+  {
+   "tile": "tail_pod_up_dome",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_roof",
+    "tail_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.4352,
+    -0.9003
+   ],
+   "normal": [
+    0.0,
+    0.9003,
+    0.4352
+   ]
+  },
+  {
+   "tile": "tail_pod_up_dome",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_down_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    -0.6885,
+    1.3898
+   ],
+   "along": [
+    0.5,
+    -0.3769,
+    0.7797
+   ],
+   "outward": [
+    -0.866,
+    -0.2176,
+    0.4502
+   ],
+   "normal": [
+    0.0,
+    0.9003,
+    0.4352
+   ]
+  },
+  {
+   "tile": "tail_pod_up_dome",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_end"
+   ],
+   "gap": 0.2245,
+   "pos": [
+    1.25,
+    -0.6885,
+    1.3898
+   ],
+   "along": [
+    0.5,
+    0.3769,
+    -0.7797
+   ],
+   "outward": [
+    0.866,
+    -0.2176,
+    0.4502
+   ],
+   "normal": [
+    0.0,
+    0.9003,
+    0.4352
+   ]
+  },
+  {
+   "tile": "tail_pod_down_dome",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "spire_dome"
+   ],
+   "gap": 0.0063,
+   "pos": [
+    0.3721,
+    -0.3699,
+    1.4655
+   ],
+   "along": [
+    -0.2557,
+    0.2602,
+    0.9311
+   ],
+   "outward": [
+    -0.725,
+    0.5855,
+    -0.3628
+   ],
+   "normal": [
+    0.6395,
+    0.7678,
+    -0.039
+   ]
+  },
+  {
+   "tile": "tail_pod_down_dome",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_roof"
+   ],
+   "gap": 0.1987,
+   "pos": [
+    0.6221,
+    -0.5583,
+    1.8554
+   ],
+   "along": [
+    0.7557,
+    -0.6372,
+    -0.1514
+   ],
+   "outward": [
+    0.141,
+    -0.0674,
+    0.9877
+   ],
+   "normal": [
+    0.6395,
+    0.7678,
+    -0.039
+   ]
+  },
+  {
+   "tile": "tail_pod_down_dome",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_up_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    -0.6885,
+    1.3898
+   ],
+   "along": [
+    -0.5,
+    0.3769,
+    -0.7797
+   ],
+   "outward": [
+    0.5839,
+    -0.5181,
+    -0.6249
+   ],
+   "normal": [
+    0.6395,
+    0.7678,
+    -0.039
+   ]
+  },
+  {
+   "tile": "nose_pod_end",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_front",
+    "nose_cube_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    -0.3222,
+    0.0,
+    -0.9467
+   ],
+   "normal": [
+    0.9467,
+    0.0,
+    -0.3222
+   ]
+  },
+  {
+   "tile": "nose_pod_end",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_up_wing"
+   ],
+   "gap": 0.2245,
+   "pos": [
+    -1.3389,
+    0.5,
+    1.4733
+   ],
+   "along": [
+    0.3222,
+    0.0,
+    0.9467
+   ],
+   "outward": [
+    -0.0,
+    1.0,
+    0.0
+   ],
+   "normal": [
+    0.9467,
+    0.0,
+    -0.3222
+   ]
+  },
+  {
+   "tile": "nose_pod_end",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.1778,
+    0.0,
+    1.9467
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    0.3222,
+    0.0,
+    0.9467
+   ],
+   "normal": [
+    0.9467,
+    0.0,
+    -0.3222
+   ]
+  },
+  {
+   "tile": "nose_pod_end",
+   "group": "nose_pod",
+   "edge": 3,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_up_dome"
+   ],
+   "gap": 0.2245,
+   "pos": [
+    -1.3389,
+    -0.5,
+    1.4733
+   ],
+   "along": [
+    -0.3222,
+    0.0,
+    -0.9467
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    -0.0
+   ],
+   "normal": [
+    0.9467,
+    0.0,
+    -0.3222
+   ]
+  },
+  {
+   "tile": "nose_pod_roof",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_end"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.1778,
+    0.0,
+    1.9467
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    -0.9845,
+    0.0,
+    -0.1754
+   ],
+   "normal": [
+    0.1754,
+    0.0,
+    -0.9845
+   ]
+  },
+  {
+   "tile": "nose_pod_roof",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_down_wing"
+   ],
+   "gap": 0.1987,
+   "pos": [
+    -0.6856,
+    0.5,
+    2.0344
+   ],
+   "along": [
+    0.9845,
+    0.0,
+    0.1754
+   ],
+   "outward": [
+    -0.0,
+    1.0,
+    0.0
+   ],
+   "normal": [
+    0.1754,
+    0.0,
+    -0.9845
+   ]
+  },
+  {
+   "tile": "nose_pod_roof",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.3867,
+   "pos": [
+    -0.1934,
+    0.0,
+    2.1221
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    0.9845,
+    0.0,
+    0.1754
+   ],
+   "normal": [
+    0.1754,
+    0.0,
+    -0.9845
+   ]
+  },
+  {
+   "tile": "nose_pod_roof",
+   "group": "nose_pod",
+   "edge": 3,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_down_dome"
+   ],
+   "gap": 0.1987,
+   "pos": [
+    -0.6856,
+    -0.5,
+    2.0344
+   ],
+   "along": [
+    -0.9845,
+    0.0,
+    -0.1754
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    -0.0
+   ],
+   "normal": [
+    0.1754,
+    0.0,
+    -0.9845
+   ]
+  },
+  {
+   "tile": "nose_pod_up_wing",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_roof",
+    "nose_cube_side_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -0.4352,
+    -0.9003
+   ],
+   "normal": [
+    0.0,
+    -0.9003,
+    0.4352
+   ]
+  },
+  {
+   "tile": "nose_pod_up_wing",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_down_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.75,
+    0.6885,
+    1.3898
+   ],
+   "along": [
+    -0.5,
+    0.3769,
+    0.7797
+   ],
+   "outward": [
+    0.866,
+    0.2176,
+    0.4502
+   ],
+   "normal": [
+    0.0,
+    -0.9003,
+    0.4352
+   ]
+  },
+  {
+   "tile": "nose_pod_up_wing",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_end"
+   ],
+   "gap": 0.2245,
+   "pos": [
+    -1.25,
+    0.6885,
+    1.3898
+   ],
+   "along": [
+    -0.5,
+    -0.3769,
+    -0.7797
+   ],
+   "outward": [
+    -0.866,
+    0.2176,
+    0.4502
+   ],
+   "normal": [
+    0.0,
+    -0.9003,
+    0.4352
+   ]
+  },
+  {
+   "tile": "nose_pod_down_wing",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "spire_wing"
+   ],
+   "gap": 0.0063,
+   "pos": [
+    -0.3721,
+    0.3699,
+    1.4655
+   ],
+   "along": [
+    0.2557,
+    -0.2602,
+    0.9311
+   ],
+   "outward": [
+    0.725,
+    -0.5855,
+    -0.3628
+   ],
+   "normal": [
+    -0.6395,
+    -0.7678,
+    -0.039
+   ]
+  },
+  {
+   "tile": "nose_pod_down_wing",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_roof"
+   ],
+   "gap": 0.1987,
+   "pos": [
+    -0.6221,
+    0.5583,
+    1.8554
+   ],
+   "along": [
+    -0.7557,
+    0.6372,
+    -0.1514
+   ],
+   "outward": [
+    -0.141,
+    0.0674,
+    0.9877
+   ],
+   "normal": [
+    -0.6395,
+    -0.7678,
+    -0.039
+   ]
+  },
+  {
+   "tile": "nose_pod_down_wing",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_up_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.75,
+    0.6885,
+    1.3898
+   ],
+   "along": [
+    0.5,
+    -0.3769,
+    -0.7797
+   ],
+   "outward": [
+    -0.5839,
+    0.5181,
+    -0.6249
+   ],
+   "normal": [
+    -0.6395,
+    -0.7678,
+    -0.039
+   ]
+  },
+  {
+   "tile": "nose_pod_up_dome",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_roof",
+    "nose_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.4352,
+    -0.9003
+   ],
+   "normal": [
+    0.0,
+    -0.9003,
+    -0.4352
+   ]
+  },
+  {
+   "tile": "nose_pod_up_dome",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_down_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.75,
+    -0.6885,
+    1.3898
+   ],
+   "along": [
+    -0.5,
+    -0.3769,
+    0.7797
+   ],
+   "outward": [
+    0.866,
+    -0.2176,
+    0.4502
+   ],
+   "normal": [
+    0.0,
+    -0.9003,
+    -0.4352
+   ]
+  },
+  {
+   "tile": "nose_pod_up_dome",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_end"
+   ],
+   "gap": 0.2245,
+   "pos": [
+    -1.25,
+    -0.6885,
+    1.3898
+   ],
+   "along": [
+    -0.5,
+    0.3769,
+    -0.7797
+   ],
+   "outward": [
+    -0.866,
+    -0.2176,
+    0.4502
+   ],
+   "normal": [
+    0.0,
+    -0.9003,
+    -0.4352
+   ]
+  },
+  {
+   "tile": "nose_pod_down_dome",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "spire_dome"
+   ],
+   "gap": 0.0063,
+   "pos": [
+    -0.3721,
+    -0.3699,
+    1.4655
+   ],
+   "along": [
+    0.2557,
+    0.2602,
+    0.9311
+   ],
+   "outward": [
+    0.725,
+    0.5855,
+    -0.3628
+   ],
+   "normal": [
+    0.6395,
+    -0.7678,
+    0.039
+   ]
+  },
+  {
+   "tile": "nose_pod_down_dome",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_roof"
+   ],
+   "gap": 0.1987,
+   "pos": [
+    -0.6221,
+    -0.5583,
+    1.8554
+   ],
+   "along": [
+    -0.7557,
+    -0.6372,
+    -0.1514
+   ],
+   "outward": [
+    -0.141,
+    -0.0674,
+    0.9877
+   ],
+   "normal": [
+    0.6395,
+    -0.7678,
+    0.039
+   ]
+  },
+  {
+   "tile": "nose_pod_down_dome",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_up_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.75,
+    -0.6885,
+    1.3898
+   ],
+   "along": [
+    0.5,
+    0.3769,
+    -0.7797
+   ],
+   "outward": [
+    -0.5839,
+    -0.5181,
+    -0.6249
+   ],
+   "normal": [
+    0.6395,
+    -0.7678,
+    0.039
    ]
   }
  ]

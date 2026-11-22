@@ -111,25 +111,6 @@ lean_spire = math.asin(0.5 / TALL)
 hinge("spire_wing", "pink", g, P(-0.5, 0.5, 1), P(0.5, 0.5, 1), "tall", (0, -1, 0), lean_spire)
 hinge("spire_dome", "green", g, P(-0.5, -0.5, 1), P(0.5, -0.5, 1), "tall", (0, 1, 0), lean_spire)
 
-# Pods: a square roof over each end cube, pulled 0.2 toward the spire and hinged on
-# one leaning end square. On each flank an up triangle leans inward from the cube and
-# a down triangle hangs from the roof, swung outward so it shingles over the up one.
-SHIFT = 0.2
-lean_end = math.asin(SHIFT)
-zt = 1 + math.cos(lean_end)
-lean_up = math.radians(10)
-swing_down = math.radians(8)
-for pod, sx, c_end, c_top, c_down_w, c_down_d in (
-        ("nose_pod", -1, "red", "blue", "red", "red"),
-        ("tail_pod", 1, "purple", "red", "yellow", "orange")):
-    xo, xi = 1.5 * sx, 0.5 * sx                    # outer / inner x of the cube below
-    to, ti = xo - SHIFT * sx, xi - SHIFT * sx       # outer / inner x of the pod roof
-    hinge(f"{pod}_end", c_end, pod, P(xo, -0.5, 1), P(xo, 0.5, 1), "sq", (-sx, 0, 0), lean_end)
-    flat(f"{pod}_roof", c_top, pod, [(to, -0.5), (ti, -0.5), (ti, 0.5), (to, 0.5)], zt)
-    hinge(f"{pod}_up_wing", "pink", pod, P(xo, 0.5, 1), P(xi, 0.5, 1), "tri", (0, -1, 0), lean_up)
-    hinge(f"{pod}_up_dome", "green", pod, P(xo, -0.5, 1), P(xi, -0.5, 1), "tri", (0, 1, 0), lean_up)
-    hinge(f"{pod}_down_wing", c_down_w, pod, P(to, 0.5, zt), P(ti, 0.5, zt), "tri", (0, 1, 0), swing_down, down=True)
-    hinge(f"{pod}_down_dome", c_down_d, pod, P(to, -0.5, zt), P(ti, -0.5, zt), "tri", (0, -1, 0), swing_down, down=True)
 
 # ---------------------------------------------------------------- side dome
 # The ball of triangles beside the nose cube: an icosahedron resting on one face,
@@ -337,6 +318,136 @@ def collisions(subset=None):
             if d > 1e-4:
                 hits.append((d, i, j))
     return hits
+
+
+# ---------------------------------------------------------------- pods
+# The structure either side of the spire. Each pod is a chain of hinges over an end cube:
+#   end square - hinged on the cube's outer top edge, leaning in by `end`
+#   roof       - hinged on the end square's top edge, pitched up toward the spire by `pitch`
+#   up tris    - hinged on the cube's two flank edges, leaning in by `up` (negative = out)
+#   down tris  - hinged on each up tri's spire-side edge, folded in by `fold`; the free
+#                side is the one that reaches for the magnet on the spire's long side
+# The angles are not chosen by hand. `solve_pods` treats every magnet as attracting the
+# nearest magnet on another tile, gives the magnets on the spire's long sides extra pull
+# (the magnetic bias), pulls each roof's inner edge onto the spire's sides so the roof
+# comes to rest against it, forbids any overlap, and searches for the pose with the
+# least total gap. Run `build_tiles.py --solve` to redo the search; paste the result here.
+POD_KEYS = ("end", "pitch", "up", "fold")
+POD_POSE = {'end': 0.328, 'pitch': 0.1763, 'up': -0.4503, 'fold': 0.8308}
+POD_LO, POD_HI = np.radians([0, -20, -40, -90]), np.radians([45, 80, 40, 90])
+MAGNET_RANGE = 0.12
+SPIRE_BIAS = 4.0   # weight of the spire's side magnets on the down tris
+FOLLOW_BIAS = 10.0 # weight of the roof matching the upward slope of its flank triangles
+REST_BIAS = 6.0    # weight of the roof's inner edge resting on the spire's sides
+
+
+def _well(gap):
+    """Magnets are short-range: a joint only pays off once it is nearly closed (within
+    about a tenth of an edge), with a weak long-range slope to guide the search."""
+    return 1 - np.exp(-(gap / MAGNET_RANGE) ** 2) + 0.2 * gap ** 2
+
+
+def _seg_gap(a0, a1, b0, b1, n=25):
+    t = np.linspace(0, 1, n)[:, None]
+    pa, pb = a0 + (a1 - a0) * t, b0 + (b1 - b0) * t
+    return float(np.linalg.norm(pa[:, None] - pb[None], axis=2).min())
+POD_COLOURS = {  # end, roof, wing-side up/down, dome-side up/down
+    "tail_pod": ("purple", "red", "pink", "yellow", "green", "orange"),
+    "nose_pod": ("red", "blue", "pink", "red", "green", "red")}
+
+
+def _perp(v, e):
+    v = np.asarray(v, float) - np.dot(v, e) * e
+    return v / np.linalg.norm(v)
+
+
+def pod_tiles(pod, pose):
+    c_end, c_roof, c_up_w, c_dn_w, c_up_d, c_dn_d = POD_COLOURS[pod]
+    X, Y = np.array([1.0, 0.0, 0.0]), np.array([0.0, 1.0, 0.0])
+    u_e = math.cos(pose["end"]) * Z - math.sin(pose["end"]) * X
+    u_r = -math.cos(pose["pitch"]) * X + math.sin(pose["pitch"]) * Z
+    ta, tb = P(1.5, -0.5, 1) + u_e, P(1.5, 0.5, 1) + u_e
+    out = [("end", c_end, [P(1.5, -0.5, 1), P(1.5, 0.5, 1), tb, ta]),
+           ("roof", c_roof, [ta, tb, tb + u_r, ta + u_r])]
+    for side, sy, c_up, c_dn in (("wing", 1, c_up_w, c_dn_w), ("dome", -1, c_up_d, c_dn_d)):
+        inner, outer = P(0.5, 0.5 * sy, 1), P(1.5, 0.5 * sy, 1)
+        apex = (inner + outer) / 2 + H3 * (math.cos(pose["up"]) * Z - math.sin(pose["up"]) * sy * Y)
+        e = (apex - inner) / np.linalg.norm(apex - inner)
+        v1 = _perp(-X, e)                       # in the up tri's plane, toward the spire
+        v2 = _perp(-sy * Y, e)                  # folding inward, toward the pod's centreline
+        v2 = _perp(v2 - np.dot(v2, v1) * v1, e)
+        reach = (inner + apex) / 2 + H3 * (math.cos(pose["fold"]) * v1 + math.sin(pose["fold"]) * v2)
+        out.append((f"up_{side}", c_up, [outer, inner, apex]))
+        out.append((f"down_{side}", c_dn, [inner, reach, apex]))
+    turn = np.array([-1.0, 1.0, 1.0]) if pod == "nose_pod" else np.ones(3)
+    return [{"name": f"{pod}_{n}", "color": c, "group": pod, "kind": "regular",
+             "pts": [np.asarray(p, float) * turn for p in pts]} for n, c, pts in out]
+
+
+def pod_cost(pose, base_solids, base_mags):
+    """Total squared magnet gap for the tail pod (lower is better); inf if anything overlaps."""
+    pod = pod_tiles("tail_pod", pose)
+    sol = [solid(t) for t in pod]
+    for i, a in enumerate(sol):
+        for b in sol[i + 1:] + base_solids:
+            if penetration(a, b) > 1e-4:
+                return math.inf
+    mags = [m for t in pod for m in tile_magnets(t)]
+    pp = np.array([m["pos"] for m in mags])
+    owner = np.array([m["tile"] for m in mags])
+    bp = np.array([m["pos"] for m in base_mags])
+    d_pod = np.linalg.norm(pp[:, None] - pp[None], axis=2)
+    d_pod[owner[:, None] == owner[None]] = np.inf
+    d_base = np.linalg.norm(pp[:, None] - bp[None], axis=2)
+    gap = np.minimum(np.minimum(d_pod.min(1), d_base.min(1)), 0.6)
+    spire = [i for i, m in enumerate(base_mags) if m["tile"].startswith("spire") and m["edge"] > 0 and m["pos"][0] > 0]
+    pull = np.minimum(d_base[:, spire].min(0), 0.6)
+    roof = pod[1]["pts"]
+    rest = sum(_seg_gap(roof[2], roof[3], t["pts"][0 if t["pts"][0][0] > 0 else 1], t["pts"][2]) ** 2
+               for t in tiles if t["group"] == "spire")
+    # The roof follows the flanks: its pitch is drawn to the slope of the down tris' top
+    # edges, which rise toward the spire once those tris have snapped onto it.
+    top = pod[3]["pts"][1] - pod[3]["pts"][2]
+    slope = math.asin(top[2] / np.linalg.norm(top))
+    return float(_well(gap).sum() + SPIRE_BIAS * _well(pull).sum() + REST_BIAS * rest
+                 + FOLLOW_BIAS * (pose["pitch"] - slope) ** 2)
+
+
+def solve_pods(seed=7, samples=3000):
+    base = [t for t in tiles if t["group"] in ("spine", "spire", "outrigger_wing", "outrigger_dome")]
+    base_solids = [solid(t) for t in base]
+    base_mags = [m for t in base for m in tile_magnets(t)]
+    lo, hi, n = POD_LO, POD_HI, len(POD_KEYS)
+    cost = lambda x: pod_cost(dict(zip(POD_KEYS, x)), base_solids, base_mags)
+    rng = np.random.default_rng(seed)
+    pool = sorted(((cost(x), tuple(x)) for x in rng.uniform(lo, hi, (samples, n))))[:8]
+    best = (math.inf, None)
+    for c, x in pool:
+        x, step = np.array(x), math.radians(8)
+        while step > math.radians(0.02):
+            moved = False
+            for i in range(n):
+                for sgn in (1, -1):
+                    y = x.copy()
+                    y[i] = np.clip(y[i] + sgn * step, lo[i], hi[i])
+                    cy = cost(y)
+                    if cy < c - 1e-9:
+                        x, c, moved = y, cy, True
+            if not moved:
+                step /= 2
+        print(f"  candidate cost {c:.4f}  {np.degrees(x).round(1)}")
+        if c < best[0]:
+            best = (c, x)
+    return dict(zip(POD_KEYS, (round(float(v), 4) for v in best[1]))), best[0]
+
+
+import sys
+if "--solve" in sys.argv:
+    POD_POSE, _c = solve_pods()
+    print(f"solved pod pose (cost {_c:.4f}): POD_POSE = {POD_POSE}")
+    print("  degrees:", {k: round(math.degrees(v), 1) for k, v in POD_POSE.items()})
+for _pod in POD_COLOURS:
+    tiles.extend(pod_tiles(_pod, POD_POSE))
 
 
 # The dome keeps only the faces that clear the hull.
