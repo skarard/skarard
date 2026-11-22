@@ -39,8 +39,8 @@ def P(x, y, z=0.0):
     return np.array([x, y, z], float)
 
 
-def add(name, color, pts, group):
-    tiles.append({"name": name, "color": color, "group": group,
+def add(name, color, pts, group, kind="regular"):
+    tiles.append({"name": name, "color": color, "group": group, "kind": kind,
                   "pts": [np.asarray(p, float) for p in pts]})
 
 
@@ -56,7 +56,7 @@ def hinge(name, color, group, a, b, kind="sq", inward=(0, 0, 0), lean=0.0, down=
         pts = [a, b, mid + H3 * u]
     elif kind == "tall":
         pts = [a, b, mid + TALL * u]
-    add(name, color, pts, group)
+    add(name, color, pts, group, "tall" if kind == "tall" else "regular")
 
 
 def wall(name, color, group, p, q, z0=0.0):
@@ -182,6 +182,70 @@ for f in ifaces:
     k += 1
 
 
+# ---------------------------------------------------------------- magnets
+# Every tile carries one magnet at the middle of each unit-length side. Longer sides
+# carry theirs where a square laid along that side would put its own: the trapezoid's
+# 2-long base has two (at 0.5 and 1.5), and the tall tile's 2-long sides have one each,
+# half an edge up from the base corner.
+MATED, LOOSE = 0.06, 0.32   # distance thresholds, in tile edges
+
+
+def tile_magnets(t):
+    pts = np.array(t["pts"])
+    m = len(pts)
+    n = np.zeros(3)
+    for i in range(m):
+        n += np.cross(pts[i], pts[(i + 1) % m])
+    n /= np.linalg.norm(n)
+    out = []
+    for i in range(m):
+        a, b = pts[i], pts[(i + 1) % m]
+        length = np.linalg.norm(b - a)
+        d = (b - a) / length
+        if length < 1.5:
+            offs = [length / 2]
+        elif t["kind"] == "tall":
+            offs = [0.5] if i == 1 else [length - 0.5]   # nearest the base corner
+        else:
+            offs = [0.5, length - 0.5]
+        for k, o in enumerate(offs):
+            out.append({"tile": t["name"], "group": t["group"], "edge": i, "slot": k,
+                        "pos": a + d * o, "dir": d, "out": np.cross(d, n), "normal": n})
+    return out
+
+
+def find_magnets():
+    mags = [mg for t in tiles for mg in tile_magnets(t)]
+    P_ = np.array([mg["pos"] for mg in mags])
+    D = np.linalg.norm(P_[:, None] - P_[None], axis=2)
+    same = np.array([[a["tile"] == b["tile"] for b in mags] for a in mags])
+    D[same] = np.inf
+    parent = list(range(len(mags)))
+
+    def root(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    for i, mg in enumerate(mags):
+        j = int(D[i].argmin())
+        mg["gap"] = float(D[i, j])
+        mg["status"] = "mated" if mg["gap"] <= MATED else "loose" if mg["gap"] <= LOOSE else "open"
+        mg["mates"] = sorted({mags[k]["tile"] for k in np.nonzero(D[i] <= (MATED if mg["status"] == "mated" else LOOSE))[0]}) \
+            if mg["status"] != "open" else []
+        for k in np.nonzero(D[i] <= MATED)[0]:
+            parent[root(i)] = root(int(k))
+    joints = {}
+    for i, mg in enumerate(mags):
+        mg["joint"] = root(i)
+        joints.setdefault(root(i), []).append(mg)
+    return mags, list(joints.values())
+
+
+magnets, joints = find_magnets()
+
+
 # ---------------------------------------------------------------- meshing
 def tile_frame(pts):
     """Orthonormal frame + inset loop for a planar convex tile."""
@@ -288,6 +352,31 @@ def write_glb(path, mode):
     for gname, children in groups.items():
         nodes.append({"name": gname, "children": children})
         roots.append(len(nodes) - 1)
+    conn = []
+    for mg in magnets:
+        # local axes: X along the tile side, Y pointing out of the tile, Z the tile normal
+        R = np.stack([mg["dir"], mg["out"], mg["normal"]], axis=1)
+        R = np.array([[1, 0, 0], [0, 0, 1], [0, -1, 0]], float) @ R
+        w = math.sqrt(max(0.0, 1 + R[0, 0] + R[1, 1] + R[2, 2])) / 2
+        if w > 1e-6:
+            q = [(R[2, 1] - R[1, 2]) / (4 * w), (R[0, 2] - R[2, 0]) / (4 * w), (R[1, 0] - R[0, 1]) / (4 * w), w]
+        else:
+            i = int(np.argmax(np.diag(R)))
+            j, k_ = (i + 1) % 3, (i + 2) % 3
+            r = math.sqrt(max(0.0, 1 + R[i, i] - R[j, j] - R[k_, k_]))
+            q = [0.0, 0.0, 0.0, 0.0]
+            q[i] = r / 2
+            q[j] = (R[j, i] + R[i, j]) / (2 * r)
+            q[k_] = (R[k_, i] + R[i, k_]) / (2 * r)
+        p = mg["pos"]
+        nodes.append({"name": f"magnet.{mg['status']}.{mg['tile']}.{mg['edge']}.{mg['slot']}",
+                      "translation": [float(p[0]), float(p[2]), float(-p[1])],
+                      "rotation": [float(x) for x in q],
+                      "extras": {"status": mg["status"], "tile": mg["tile"], "mates": mg["mates"],
+                                 "gap": round(mg["gap"], 4) if math.isfinite(mg["gap"]) else None}})
+        conn.append(len(nodes) - 1)
+    nodes.append({"name": "magnets", "children": conn})
+    roots.append(len(nodes) - 1)
     nodes.append({"name": "tile_starship", "children": roots})
     gltf = {"asset": {"version": "2.0", "generator": "build_tiles.py"}, "scene": 0,
             "scenes": [{"nodes": [len(nodes) - 1]}], "nodes": nodes, "meshes": meshes,
@@ -302,8 +391,30 @@ def write_glb(path, mode):
         f.write(struct.pack("<I4s", len(blob), b"BIN\0") + bytes(blob))
 
 
+def write_magnets(path):
+    r4 = lambda a: [round(float(x), 4) for x in a]
+    with open(path, "w") as f:
+        json.dump({"units": "tile edges, Z-up", "thresholds": {"mated": MATED, "loose": LOOSE},
+                   "magnets": [{"tile": m["tile"], "group": m["group"], "edge": m["edge"], "slot": m["slot"],
+                                "status": m["status"], "mates": m["mates"],
+                                "gap": round(m["gap"], 4) if math.isfinite(m["gap"]) else None,
+                                "pos": r4(m["pos"]), "along": r4(m["dir"]), "outward": r4(m["out"]),
+                                "normal": r4(m["normal"])} for m in magnets]}, f, indent=1)
+
+
 def write_viewer(template, path):
-    data = {"bar": BAR, "thick": THICK, "colors": COLORS, "tiles": [
+    marks = []
+    for js_ in joints:
+        if js_[0]["status"] == "mated":
+            marks.append((np.mean([m_["pos"] for m_ in js_], axis=0), js_[0]["dir"], "mated"))
+        else:
+            marks += [(m_["pos"], m_["dir"], m_["status"]) for m_ in js_]
+    r4 = lambda a: [round(float(x), 4) for x in a]
+    data = {"bar": BAR, "thick": THICK, "colors": COLORS,
+            "magnets": [{"p": r4(p), "d": r4(d), "s": st} for p, d, st in marks],
+            "stats": {st: sum(1 for m_ in magnets if m_["status"] == st) for st in ("mated", "loose", "open")},
+            "joints": sum(1 for j_ in joints if j_[0]["status"] == "mated"),
+            "tiles": [
         {"n": t["name"], "g": t["group"], "c": t["color"],
          "p": [[round(float(x), 4) for x in p] for p in t["pts"]]} for t in tiles]}
     with open(template) as f:
@@ -319,8 +430,14 @@ if __name__ == "__main__":
     for mode in ("frames", "panels"):
         write_obj(os.path.join(out, f"tile_starship_{mode}.obj"), mode)
         write_glb(os.path.join(out, f"tile_starship_{mode}.glb"), mode)
+    write_magnets(os.path.join(out, "magnets.json"))
     write_viewer(os.path.join(here, "viewer.template.html"), os.path.join(out, "viewer.html"))
     counts = {}
     for t in tiles:
         counts[len(t["pts"])] = counts.get(len(t["pts"]), 0) + 1
+    st = {k: sum(1 for m in magnets if m["status"] == k) for k in ("mated", "loose", "open")}
+    print(f"{len(magnets)} magnets: {st}, {sum(1 for j in joints if j[0]['status'] == 'mated')} mated joints")
+    for m in magnets:
+        if m["status"] == "loose":
+            print(f"  loose {m['tile']}[{m['edge']}] gap {m['gap']:.2f} -> {m['mates']}")
     print(f"{len(tiles)} tiles  (by vertex count: {counts})  ->  {out}")

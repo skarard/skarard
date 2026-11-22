@@ -1,0 +1,6082 @@
+{
+ "units": "tile edges, Z-up",
+ "thresholds": {
+  "mated": 0.06,
+  "loose": 0.32
+ },
+ "magnets": [
+  {
+   "tile": "nose_cube_front",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.7071,
+   "pos": [
+    -1.5,
+    0.0,
+    0.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_front",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_side_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_front",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_roof",
+    "nose_pod_end"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_front",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_side_wing",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_trapezoid"
+   ],
+   "gap": 0.025,
+   "pos": [
+    -1.0,
+    0.5,
+    0.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_side_wing",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_side_wing",
+    "nose_cube_bulkhead",
+    "wing_infill_wall"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_side_wing",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_roof",
+    "nose_pod_up_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_side_wing",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_front"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    -1.0,
+    -0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_side_dome",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "dome_01"
+   ],
+   "gap": 0.3195,
+   "pos": [
+    -1.0,
+    -0.5,
+    0.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_side_dome",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_side_dome",
+    "nose_cube_bulkhead"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_side_dome",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_roof",
+    "nose_pod_up_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_side_dome",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_front"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    -1.0,
+    -0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_bulkhead",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.7071,
+   "pos": [
+    -0.5,
+    0.0,
+    0.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_bulkhead",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_side_wing",
+    "nose_cube_side_wing",
+    "wing_infill_wall"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_bulkhead",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_roof",
+    "nose_cube_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_bulkhead",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_side_dome",
+    "nose_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_cube_roof",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_side_dome",
+    "nose_pod_up_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "nose_cube_roof",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_roof",
+    "nose_cube_bulkhead"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "nose_cube_roof",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_side_wing",
+    "nose_pod_up_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "nose_cube_roof",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_front",
+    "nose_pod_end"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "centre_side_wing",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    0.0,
+    0.5,
+    0.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_side_wing",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_bulkhead",
+    "tail_cube_side_wing",
+    "wing_prism_wall_nose",
+    "wing_prism_wall_tail"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_side_wing",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_roof",
+    "spire_wing",
+    "wing_infill_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_side_wing",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_bulkhead",
+    "nose_cube_side_wing",
+    "wing_infill_wall"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    -1.0,
+    -0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_side_dome",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    0.0,
+    -0.5,
+    0.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_side_dome",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_bulkhead",
+    "dome_prism_wall_nose",
+    "dome_prism_wall_tail",
+    "tail_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_side_dome",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_roof",
+    "dome_infill_roof",
+    "spire_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_side_dome",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_bulkhead",
+    "nose_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    -1.0,
+    -0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_bulkhead",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.7071,
+   "pos": [
+    0.5,
+    0.0,
+    0.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_bulkhead",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_side_wing",
+    "tail_cube_side_wing",
+    "wing_prism_wall_nose",
+    "wing_prism_wall_tail"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_bulkhead",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_roof",
+    "tail_cube_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_bulkhead",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_side_dome",
+    "dome_prism_wall_nose",
+    "dome_prism_wall_tail",
+    "tail_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "centre_roof",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_side_dome",
+    "dome_infill_roof",
+    "spire_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "centre_roof",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_bulkhead",
+    "tail_cube_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "centre_roof",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_side_wing",
+    "spire_wing",
+    "wing_infill_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "centre_roof",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_bulkhead",
+    "nose_cube_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "tail_cube_side_wing",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    1.0,
+    0.5,
+    0.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_side_wing",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_back"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_side_wing",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_roof",
+    "tail_pod_up_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_side_wing",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_bulkhead",
+    "centre_side_wing",
+    "wing_prism_wall_nose",
+    "wing_prism_wall_tail"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    -1.0,
+    -0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_side_dome",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    1.0,
+    -0.5,
+    0.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_side_dome",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_back"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_side_dome",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_roof",
+    "tail_pod_up_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_side_dome",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_bulkhead",
+    "centre_side_dome",
+    "dome_prism_wall_nose",
+    "dome_prism_wall_tail"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    -1.0,
+    -0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_back",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.7071,
+   "pos": [
+    1.5,
+    0.0,
+    0.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_back",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_side_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_back",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_roof",
+    "tail_pod_end"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_back",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    1.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_cube_roof",
+   "group": "spine",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_side_dome",
+    "tail_pod_up_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "tail_cube_roof",
+   "group": "spine",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_back",
+    "tail_pod_end"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "tail_cube_roof",
+   "group": "spine",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_side_wing",
+    "tail_pod_up_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "tail_cube_roof",
+   "group": "spine",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_bulkhead",
+    "centre_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "wing_prism_face",
+   "group": "outrigger_wing",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    0.5,
+    1.366,
+    0.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_face",
+   "group": "outrigger_wing",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_prism_wall_tail"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    1.366,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_face",
+   "group": "outrigger_wing",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_prism_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    1.366,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_face",
+   "group": "outrigger_wing",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_infill_wall",
+    "wing_prism_wall_nose"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    1.366,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    -1.0,
+    -0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_wall_nose",
+   "group": "outrigger_wing",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    0.25,
+    0.933,
+    0.0
+   ],
+   "along": [
+    0.5,
+    -0.866,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -0.0,
+    -1.0
+   ],
+   "normal": [
+    -0.866,
+    -0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_wall_nose",
+   "group": "outrigger_wing",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_bulkhead",
+    "centre_side_wing",
+    "tail_cube_side_wing",
+    "wing_prism_wall_tail"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    0.5,
+    -0.866,
+    0.0
+   ],
+   "normal": [
+    -0.866,
+    -0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_wall_nose",
+   "group": "outrigger_wing",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_infill_roof",
+    "wing_prism_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.25,
+    0.933,
+    1.0
+   ],
+   "along": [
+    -0.5,
+    0.866,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    -0.866,
+    -0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_wall_nose",
+   "group": "outrigger_wing",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_infill_wall",
+    "wing_prism_face"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    1.366,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    -0.5,
+    0.866,
+    0.0
+   ],
+   "normal": [
+    -0.866,
+    -0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_wall_tail",
+   "group": "outrigger_wing",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    0.75,
+    0.933,
+    0.0
+   ],
+   "along": [
+    -0.5,
+    -0.866,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    -0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_wall_tail",
+   "group": "outrigger_wing",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_bulkhead",
+    "centre_side_wing",
+    "tail_cube_side_wing",
+    "wing_prism_wall_nose"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    -0.5,
+    -0.866,
+    0.0
+   ],
+   "normal": [
+    -0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_wall_tail",
+   "group": "outrigger_wing",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_prism_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    0.933,
+    1.0
+   ],
+   "along": [
+    0.5,
+    0.866,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -0.0,
+    1.0
+   ],
+   "normal": [
+    -0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_wall_tail",
+   "group": "outrigger_wing",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_prism_face"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    1.366,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    0.5,
+    0.866,
+    0.0
+   ],
+   "normal": [
+    -0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_infill_wall",
+   "group": "outrigger_wing",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_trapezoid"
+   ],
+   "gap": 0.025,
+   "pos": [
+    -0.25,
+    0.933,
+    0.0
+   ],
+   "along": [
+    -0.5,
+    -0.866,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    -0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_infill_wall",
+   "group": "outrigger_wing",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_side_wing",
+    "nose_cube_bulkhead",
+    "nose_cube_side_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5,
+    0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    -0.5,
+    -0.866,
+    0.0
+   ],
+   "normal": [
+    -0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_infill_wall",
+   "group": "outrigger_wing",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_infill_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.25,
+    0.933,
+    1.0
+   ],
+   "along": [
+    0.5,
+    0.866,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -0.0,
+    1.0
+   ],
+   "normal": [
+    -0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_infill_wall",
+   "group": "outrigger_wing",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_prism_face",
+    "wing_prism_wall_nose"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    1.366,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    0.5,
+    0.866,
+    0.0
+   ],
+   "normal": [
+    -0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "wing_prism_roof",
+   "group": "outrigger_wing",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_prism_face"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    1.366,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    1.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "wing_prism_roof",
+   "group": "outrigger_wing",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_prism_wall_tail"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    0.933,
+    1.0
+   ],
+   "along": [
+    -0.5,
+    -0.866,
+    0.0
+   ],
+   "outward": [
+    0.866,
+    -0.5,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "wing_prism_roof",
+   "group": "outrigger_wing",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_infill_roof",
+    "wing_prism_wall_nose"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.25,
+    0.933,
+    1.0
+   ],
+   "along": [
+    -0.5,
+    0.866,
+    0.0
+   ],
+   "outward": [
+    -0.866,
+    -0.5,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "wing_infill_roof",
+   "group": "outrigger_wing",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_infill_wall"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.25,
+    0.933,
+    1.0
+   ],
+   "along": [
+    -0.5,
+    -0.866,
+    0.0
+   ],
+   "outward": [
+    -0.866,
+    0.5,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "wing_infill_roof",
+   "group": "outrigger_wing",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_roof",
+    "centre_side_wing",
+    "spire_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "wing_infill_roof",
+   "group": "outrigger_wing",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_prism_roof",
+    "wing_prism_wall_nose"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.25,
+    0.933,
+    1.0
+   ],
+   "along": [
+    -0.5,
+    0.866,
+    0.0
+   ],
+   "outward": [
+    0.866,
+    0.5,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "wing_trapezoid",
+   "group": "outrigger_wing",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_side_wing"
+   ],
+   "gap": 0.025,
+   "pos": [
+    -1.0,
+    0.5,
+    0.025
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    -0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "wing_trapezoid",
+   "group": "outrigger_wing",
+   "edge": 1,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.6897,
+   "pos": [
+    -1.75,
+    0.933,
+    0.025
+   ],
+   "along": [
+    -0.5,
+    0.866,
+    0.0
+   ],
+   "outward": [
+    -0.866,
+    -0.5,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    -0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "wing_trapezoid",
+   "group": "outrigger_wing",
+   "edge": 2,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.9877,
+   "pos": [
+    -1.5,
+    1.366,
+    0.025
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "wing_trapezoid",
+   "group": "outrigger_wing",
+   "edge": 2,
+   "slot": 1,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5006,
+   "pos": [
+    -0.5,
+    1.366,
+    0.025
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "wing_trapezoid",
+   "group": "outrigger_wing",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "wing_infill_wall"
+   ],
+   "gap": 0.025,
+   "pos": [
+    -0.25,
+    0.933,
+    0.025
+   ],
+   "along": [
+    -0.5,
+    -0.866,
+    0.0
+   ],
+   "outward": [
+    0.866,
+    -0.5,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    -0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "dome_prism_face",
+   "group": "outrigger_dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    0.5,
+    -1.366,
+    0.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_face",
+   "group": "outrigger_dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_prism_wall_tail"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    -1.366,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_face",
+   "group": "outrigger_dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_prism_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    -1.366,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_face",
+   "group": "outrigger_dome",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_prism_wall_nose"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    -1.366,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    -1.0,
+    -0.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_wall_nose",
+   "group": "outrigger_dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    0.25,
+    -0.933,
+    0.0
+   ],
+   "along": [
+    0.5,
+    0.866,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    0.866,
+    -0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_wall_nose",
+   "group": "outrigger_dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_bulkhead",
+    "centre_side_dome",
+    "dome_prism_wall_tail",
+    "tail_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    0.5,
+    0.866,
+    -0.0
+   ],
+   "normal": [
+    0.866,
+    -0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_wall_nose",
+   "group": "outrigger_dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_infill_roof",
+    "dome_prism_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.25,
+    -0.933,
+    1.0
+   ],
+   "along": [
+    -0.5,
+    -0.866,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.866,
+    -0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_wall_nose",
+   "group": "outrigger_dome",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_prism_face"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    -1.366,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    -0.5,
+    -0.866,
+    -0.0
+   ],
+   "normal": [
+    0.866,
+    -0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_wall_tail",
+   "group": "outrigger_dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    0.75,
+    -0.933,
+    0.0
+   ],
+   "along": [
+    -0.5,
+    0.866,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "normal": [
+    0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_wall_tail",
+   "group": "outrigger_dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_bulkhead",
+    "centre_side_dome",
+    "dome_prism_wall_nose",
+    "tail_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    -0.5,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "outward": [
+    -0.5,
+    0.866,
+    0.0
+   ],
+   "normal": [
+    0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_wall_tail",
+   "group": "outrigger_dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_prism_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    -0.933,
+    1.0
+   ],
+   "along": [
+    0.5,
+    -0.866,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_wall_tail",
+   "group": "outrigger_dome",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_prism_face"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    -1.366,
+    0.5
+   ],
+   "along": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "outward": [
+    0.5,
+    -0.866,
+    0.0
+   ],
+   "normal": [
+    0.866,
+    0.5,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_prism_roof",
+   "group": "outrigger_dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_prism_face"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.5,
+    -1.366,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "dome_prism_roof",
+   "group": "outrigger_dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_prism_wall_tail"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    -0.933,
+    1.0
+   ],
+   "along": [
+    -0.5,
+    0.866,
+    0.0
+   ],
+   "outward": [
+    0.866,
+    0.5,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "dome_prism_roof",
+   "group": "outrigger_dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_infill_roof",
+    "dome_prism_wall_nose"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.25,
+    -0.933,
+    1.0
+   ],
+   "along": [
+    -0.5,
+    -0.866,
+    0.0
+   ],
+   "outward": [
+    -0.866,
+    0.5,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "dome_infill_roof",
+   "group": "outrigger_dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "dome_02",
+    "dome_13"
+   ],
+   "gap": 0.3156,
+   "pos": [
+    -0.25,
+    -0.933,
+    1.0
+   ],
+   "along": [
+    -0.5,
+    0.866,
+    0.0
+   ],
+   "outward": [
+    -0.866,
+    -0.5,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "dome_infill_roof",
+   "group": "outrigger_dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_roof",
+    "centre_side_dome",
+    "spire_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    1.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "dome_infill_roof",
+   "group": "outrigger_dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_prism_roof",
+    "dome_prism_wall_nose"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.25,
+    -0.933,
+    1.0
+   ],
+   "along": [
+    -0.5,
+    -0.866,
+    0.0
+   ],
+   "outward": [
+    0.866,
+    -0.5,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "spire_wing",
+   "group": "spire",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_roof",
+    "centre_side_wing",
+    "wing_infill_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.2582,
+    -0.9661
+   ],
+   "normal": [
+    0.0,
+    -0.9661,
+    -0.2582
+   ]
+  },
+  {
+   "tile": "spire_wing",
+   "group": "spire",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_down_wing"
+   ],
+   "gap": 0.1892,
+   "pos": [
+    0.375,
+    0.375,
+    1.4677
+   ],
+   "along": [
+    -0.25,
+    -0.25,
+    0.9354
+   ],
+   "outward": [
+    0.9682,
+    -0.0645,
+    0.2415
+   ],
+   "normal": [
+    0.0,
+    -0.9661,
+    -0.2582
+   ]
+  },
+  {
+   "tile": "spire_wing",
+   "group": "spire",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_down_wing"
+   ],
+   "gap": 0.1892,
+   "pos": [
+    -0.375,
+    0.375,
+    1.4677
+   ],
+   "along": [
+    -0.25,
+    0.25,
+    -0.9354
+   ],
+   "outward": [
+    -0.9682,
+    -0.0645,
+    0.2415
+   ],
+   "normal": [
+    0.0,
+    -0.9661,
+    -0.2582
+   ]
+  },
+  {
+   "tile": "spire_dome",
+   "group": "spire",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "centre_roof",
+    "centre_side_dome",
+    "dome_infill_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -0.2582,
+    -0.9661
+   ],
+   "normal": [
+    0.0,
+    -0.9661,
+    0.2582
+   ]
+  },
+  {
+   "tile": "spire_dome",
+   "group": "spire",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_down_dome"
+   ],
+   "gap": 0.1892,
+   "pos": [
+    0.375,
+    -0.375,
+    1.4677
+   ],
+   "along": [
+    -0.25,
+    0.25,
+    0.9354
+   ],
+   "outward": [
+    0.9682,
+    0.0645,
+    0.2415
+   ],
+   "normal": [
+    0.0,
+    -0.9661,
+    0.2582
+   ]
+  },
+  {
+   "tile": "spire_dome",
+   "group": "spire",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_down_dome"
+   ],
+   "gap": 0.1892,
+   "pos": [
+    -0.375,
+    -0.375,
+    1.4677
+   ],
+   "along": [
+    -0.25,
+    -0.25,
+    -0.9354
+   ],
+   "outward": [
+    -0.9682,
+    0.0645,
+    0.2415
+   ],
+   "normal": [
+    0.0,
+    -0.9661,
+    0.2582
+   ]
+  },
+  {
+   "tile": "nose_pod_end",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_front",
+    "nose_cube_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    -0.25,
+    0.0,
+    -0.9682
+   ],
+   "normal": [
+    0.9682,
+    0.0,
+    -0.25
+   ]
+  },
+  {
+   "tile": "nose_pod_end",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_up_wing"
+   ],
+   "gap": 0.1569,
+   "pos": [
+    -1.375,
+    0.5,
+    1.4841
+   ],
+   "along": [
+    0.25,
+    0.0,
+    0.9682
+   ],
+   "outward": [
+    -0.0,
+    1.0,
+    0.0
+   ],
+   "normal": [
+    0.9682,
+    0.0,
+    -0.25
+   ]
+  },
+  {
+   "tile": "nose_pod_end",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.25,
+    0.0,
+    1.9682
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    0.25,
+    0.0,
+    0.9682
+   ],
+   "normal": [
+    0.9682,
+    0.0,
+    -0.25
+   ]
+  },
+  {
+   "tile": "nose_pod_end",
+   "group": "nose_pod",
+   "edge": 3,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_up_dome"
+   ],
+   "gap": 0.1569,
+   "pos": [
+    -1.375,
+    -0.5,
+    1.4841
+   ],
+   "along": [
+    -0.25,
+    0.0,
+    -0.9682
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    -0.0
+   ],
+   "normal": [
+    0.9682,
+    0.0,
+    -0.25
+   ]
+  },
+  {
+   "tile": "nose_pod_roof",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_down_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.75,
+    -0.5,
+    1.9682
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "nose_pod_roof",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    -0.25,
+    0.0,
+    1.9682
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "nose_pod_roof",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_down_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.75,
+    0.5,
+    1.9682
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "nose_pod_roof",
+   "group": "nose_pod",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_end"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.25,
+    0.0,
+    1.9682
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "nose_pod_up_wing",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_roof",
+    "nose_cube_side_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.1736,
+    -0.9848
+   ],
+   "normal": [
+    0.0,
+    -0.9848,
+    -0.1736
+   ]
+  },
+  {
+   "tile": "nose_pod_up_wing",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_down_wing"
+   ],
+   "gap": 0.2828,
+   "pos": [
+    -0.75,
+    0.4248,
+    1.4264
+   ],
+   "along": [
+    -0.5,
+    -0.1504,
+    0.8529
+   ],
+   "outward": [
+    0.866,
+    -0.0868,
+    0.4924
+   ],
+   "normal": [
+    0.0,
+    -0.9848,
+    -0.1736
+   ]
+  },
+  {
+   "tile": "nose_pod_up_wing",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_down_wing",
+    "nose_pod_end"
+   ],
+   "gap": 0.1569,
+   "pos": [
+    -1.25,
+    0.4248,
+    1.4264
+   ],
+   "along": [
+    -0.5,
+    0.1504,
+    -0.8529
+   ],
+   "outward": [
+    -0.866,
+    -0.0868,
+    0.4924
+   ],
+   "normal": [
+    0.0,
+    -0.9848,
+    -0.1736
+   ]
+  },
+  {
+   "tile": "nose_pod_up_dome",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_cube_roof",
+    "nose_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    -0.1736,
+    -0.9848
+   ],
+   "normal": [
+    0.0,
+    -0.9848,
+    0.1736
+   ]
+  },
+  {
+   "tile": "nose_pod_up_dome",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_down_dome"
+   ],
+   "gap": 0.2828,
+   "pos": [
+    -0.75,
+    -0.4248,
+    1.4264
+   ],
+   "along": [
+    -0.5,
+    0.1504,
+    0.8529
+   ],
+   "outward": [
+    0.866,
+    0.0868,
+    0.4924
+   ],
+   "normal": [
+    0.0,
+    -0.9848,
+    0.1736
+   ]
+  },
+  {
+   "tile": "nose_pod_up_dome",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "dome_12",
+    "nose_pod_down_dome",
+    "nose_pod_end"
+   ],
+   "gap": 0.1569,
+   "pos": [
+    -1.25,
+    -0.4248,
+    1.4264
+   ],
+   "along": [
+    -0.5,
+    -0.1504,
+    -0.8529
+   ],
+   "outward": [
+    -0.866,
+    0.0868,
+    0.4924
+   ],
+   "normal": [
+    0.0,
+    -0.9848,
+    0.1736
+   ]
+  },
+  {
+   "tile": "nose_pod_down_wing",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.75,
+    0.5,
+    1.9682
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_pod_down_wing",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_up_wing",
+    "spire_wing"
+   ],
+   "gap": 0.1892,
+   "pos": [
+    -0.5,
+    0.5,
+    1.5352
+   ],
+   "along": [
+    -0.5,
+    0.0,
+    -0.866
+   ],
+   "outward": [
+    0.866,
+    0.0,
+    -0.5
+   ],
+   "normal": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_pod_down_wing",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_up_wing"
+   ],
+   "gap": 0.2828,
+   "pos": [
+    -1.0,
+    0.5,
+    1.5352
+   ],
+   "along": [
+    -0.5,
+    0.0,
+    0.866
+   ],
+   "outward": [
+    -0.866,
+    0.0,
+    -0.5
+   ],
+   "normal": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_pod_down_dome",
+   "group": "nose_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "nose_pod_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.75,
+    -0.5,
+    1.9682
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_pod_down_dome",
+   "group": "nose_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_up_dome",
+    "spire_dome"
+   ],
+   "gap": 0.1892,
+   "pos": [
+    -0.5,
+    -0.5,
+    1.5352
+   ],
+   "along": [
+    -0.5,
+    0.0,
+    -0.866
+   ],
+   "outward": [
+    0.866,
+    0.0,
+    -0.5
+   ],
+   "normal": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "nose_pod_down_dome",
+   "group": "nose_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_up_dome"
+   ],
+   "gap": 0.2828,
+   "pos": [
+    -1.0,
+    -0.5,
+    1.5352
+   ],
+   "along": [
+    -0.5,
+    0.0,
+    0.866
+   ],
+   "outward": [
+    -0.866,
+    0.0,
+    -0.5
+   ],
+   "normal": [
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_pod_end",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_back",
+    "tail_cube_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.5,
+    0.0,
+    1.0
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    0.25,
+    0.0,
+    -0.9682
+   ],
+   "normal": [
+    0.9682,
+    0.0,
+    0.25
+   ]
+  },
+  {
+   "tile": "tail_pod_end",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_up_wing"
+   ],
+   "gap": 0.1569,
+   "pos": [
+    1.375,
+    0.5,
+    1.4841
+   ],
+   "along": [
+    -0.25,
+    0.0,
+    0.9682
+   ],
+   "outward": [
+    0.0,
+    1.0,
+    -0.0
+   ],
+   "normal": [
+    0.9682,
+    0.0,
+    0.25
+   ]
+  },
+  {
+   "tile": "tail_pod_end",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.25,
+    0.0,
+    1.9682
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    -0.25,
+    0.0,
+    0.9682
+   ],
+   "normal": [
+    0.9682,
+    0.0,
+    0.25
+   ]
+  },
+  {
+   "tile": "tail_pod_end",
+   "group": "tail_pod",
+   "edge": 3,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_up_dome"
+   ],
+   "gap": 0.1569,
+   "pos": [
+    1.375,
+    -0.5,
+    1.4841
+   ],
+   "along": [
+    0.25,
+    0.0,
+    -0.9682
+   ],
+   "outward": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "normal": [
+    0.9682,
+    0.0,
+    0.25
+   ]
+  },
+  {
+   "tile": "tail_pod_roof",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_down_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    -0.5,
+    1.9682
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    -1.0,
+    -0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "tail_pod_roof",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    0.25,
+    0.0,
+    1.9682
+   ],
+   "along": [
+    0.0,
+    1.0,
+    0.0
+   ],
+   "outward": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "tail_pod_roof",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_down_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    0.5,
+    1.9682
+   ],
+   "along": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    1.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "tail_pod_roof",
+   "group": "tail_pod",
+   "edge": 3,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_end"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.25,
+    0.0,
+    1.9682
+   ],
+   "along": [
+    0.0,
+    -1.0,
+    0.0
+   ],
+   "outward": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "normal": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "tile": "tail_pod_up_wing",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_roof",
+    "tail_cube_side_wing"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.1736,
+    -0.9848
+   ],
+   "normal": [
+    0.0,
+    0.9848,
+    0.1736
+   ]
+  },
+  {
+   "tile": "tail_pod_up_wing",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_down_wing"
+   ],
+   "gap": 0.2828,
+   "pos": [
+    0.75,
+    0.4248,
+    1.4264
+   ],
+   "along": [
+    0.5,
+    -0.1504,
+    0.8529
+   ],
+   "outward": [
+    -0.866,
+    -0.0868,
+    0.4924
+   ],
+   "normal": [
+    0.0,
+    0.9848,
+    0.1736
+   ]
+  },
+  {
+   "tile": "tail_pod_up_wing",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_down_wing",
+    "tail_pod_end"
+   ],
+   "gap": 0.1569,
+   "pos": [
+    1.25,
+    0.4248,
+    1.4264
+   ],
+   "along": [
+    0.5,
+    0.1504,
+    -0.8529
+   ],
+   "outward": [
+    0.866,
+    -0.0868,
+    0.4924
+   ],
+   "normal": [
+    0.0,
+    0.9848,
+    0.1736
+   ]
+  },
+  {
+   "tile": "tail_pod_up_dome",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_cube_roof",
+    "tail_cube_side_dome"
+   ],
+   "gap": 0.0,
+   "pos": [
+    1.0,
+    -0.5,
+    1.0
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    -0.0,
+    -0.1736,
+    -0.9848
+   ],
+   "normal": [
+    0.0,
+    0.9848,
+    -0.1736
+   ]
+  },
+  {
+   "tile": "tail_pod_up_dome",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_down_dome"
+   ],
+   "gap": 0.2828,
+   "pos": [
+    0.75,
+    -0.4248,
+    1.4264
+   ],
+   "along": [
+    0.5,
+    0.1504,
+    0.8529
+   ],
+   "outward": [
+    -0.866,
+    0.0868,
+    0.4924
+   ],
+   "normal": [
+    0.0,
+    0.9848,
+    -0.1736
+   ]
+  },
+  {
+   "tile": "tail_pod_up_dome",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_down_dome",
+    "tail_pod_end"
+   ],
+   "gap": 0.1569,
+   "pos": [
+    1.25,
+    -0.4248,
+    1.4264
+   ],
+   "along": [
+    0.5,
+    -0.1504,
+    -0.8529
+   ],
+   "outward": [
+    0.866,
+    0.0868,
+    0.4924
+   ],
+   "normal": [
+    0.0,
+    0.9848,
+    -0.1736
+   ]
+  },
+  {
+   "tile": "tail_pod_down_wing",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    0.5,
+    1.9682
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_pod_down_wing",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "spire_wing",
+    "tail_pod_up_wing"
+   ],
+   "gap": 0.1892,
+   "pos": [
+    0.5,
+    0.5,
+    1.5352
+   ],
+   "along": [
+    0.5,
+    0.0,
+    -0.866
+   ],
+   "outward": [
+    -0.866,
+    -0.0,
+    -0.5
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_pod_down_wing",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_up_wing"
+   ],
+   "gap": 0.2828,
+   "pos": [
+    1.0,
+    0.5,
+    1.5352
+   ],
+   "along": [
+    0.5,
+    0.0,
+    0.866
+   ],
+   "outward": [
+    0.866,
+    0.0,
+    -0.5
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_pod_down_dome",
+   "group": "tail_pod",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "tail_pod_roof"
+   ],
+   "gap": 0.0,
+   "pos": [
+    0.75,
+    -0.5,
+    1.9682
+   ],
+   "along": [
+    -1.0,
+    0.0,
+    0.0
+   ],
+   "outward": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_pod_down_dome",
+   "group": "tail_pod",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "spire_dome",
+    "tail_pod_up_dome"
+   ],
+   "gap": 0.1892,
+   "pos": [
+    0.5,
+    -0.5,
+    1.5352
+   ],
+   "along": [
+    0.5,
+    0.0,
+    -0.866
+   ],
+   "outward": [
+    -0.866,
+    -0.0,
+    -0.5
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "tail_pod_down_dome",
+   "group": "tail_pod",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "tail_pod_up_dome"
+   ],
+   "gap": 0.2828,
+   "pos": [
+    1.0,
+    -0.5,
+    1.5352
+   ],
+   "along": [
+    0.5,
+    0.0,
+    0.866
+   ],
+   "outward": [
+    0.866,
+    0.0,
+    -0.5
+   ],
+   "normal": [
+    0.0,
+    -1.0,
+    0.0
+   ]
+  },
+  {
+   "tile": "dome_00",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_03"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.6332,
+    -1.6914,
+    0.2887
+   ],
+   "along": [
+    -0.121,
+    -0.8075,
+    0.5774
+   ],
+   "outward": [
+    0.9377,
+    0.0978,
+    0.3333
+   ],
+   "normal": [
+    0.3256,
+    -0.5817,
+    -0.7454
+   ]
+  },
+  {
+   "tile": "dome_00",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_06"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.0695,
+    -1.9356,
+    0.2887
+   ],
+   "along": [
+    -0.7516,
+    0.319,
+    -0.5774
+   ],
+   "outward": [
+    -0.5737,
+    -0.7482,
+    0.3333
+   ],
+   "normal": [
+    0.3256,
+    -0.5817,
+    -0.7454
+   ]
+  },
+  {
+   "tile": "dome_00",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    -1.009,
+    -1.5319,
+    0.0
+   ],
+   "along": [
+    0.8726,
+    0.4885,
+    0.0
+   ],
+   "outward": [
+    -0.3641,
+    0.6504,
+    -0.6667
+   ],
+   "normal": [
+    0.3256,
+    -0.5817,
+    -0.7454
+   ]
+  },
+  {
+   "tile": "dome_01",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    -1.0024,
+    -1.0319,
+    0.0
+   ],
+   "along": [
+    -0.8593,
+    0.5115,
+    -0.0
+   ],
+   "outward": [
+    -0.3812,
+    -0.6405,
+    -0.6667
+   ],
+   "normal": [
+    0.341,
+    0.5729,
+    -0.7454
+   ]
+  },
+  {
+   "tile": "dome_01",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_cube_side_dome"
+   ],
+   "gap": 0.3195,
+   "pos": [
+    -1.0521,
+    -0.6267,
+    0.2887
+   ],
+   "along": [
+    0.7598,
+    0.2989,
+    0.5774
+   ],
+   "outward": [
+    -0.5536,
+    0.7632,
+    0.3333
+   ],
+   "normal": [
+    0.341,
+    0.5729,
+    -0.7454
+   ]
+  },
+  {
+   "tile": "dome_01",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_02"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.6225,
+    -0.8825,
+    0.2887
+   ],
+   "along": [
+    0.0995,
+    -0.8104,
+    -0.5774
+   ],
+   "outward": [
+    0.9348,
+    -0.1227,
+    0.3333
+   ],
+   "normal": [
+    0.341,
+    0.5729,
+    -0.7454
+   ]
+  },
+  {
+   "tile": "dome_02",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_01"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.6225,
+    -0.8825,
+    0.2887
+   ],
+   "along": [
+    -0.0995,
+    0.8104,
+    0.5774
+   ],
+   "outward": [
+    -0.4694,
+    0.4734,
+    -0.7454
+   ],
+   "normal": [
+    0.8773,
+    0.3452,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_02",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_13"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.4441,
+    -0.8848,
+    0.7558
+   ],
+   "along": [
+    0.4563,
+    -0.8152,
+    0.3568
+   ],
+   "outward": [
+    0.1485,
+    0.4652,
+    0.8727
+   ],
+   "normal": [
+    0.8773,
+    0.3452,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_02",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_03"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.3943,
+    -1.29,
+    0.4671
+   ],
+   "along": [
+    -0.3568,
+    0.0047,
+    -0.9342
+   ],
+   "outward": [
+    0.3209,
+    -0.9385,
+    -0.1273
+   ],
+   "normal": [
+    0.8773,
+    0.3452,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_03",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_02"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.3943,
+    -1.29,
+    0.4671
+   ],
+   "along": [
+    0.3568,
+    -0.0047,
+    0.9342
+   ],
+   "outward": [
+    0.3457,
+    0.9297,
+    -0.1273
+   ],
+   "normal": [
+    0.8679,
+    -0.3684,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_03",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_14"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.4548,
+    -1.6938,
+    0.7558
+   ],
+   "along": [
+    -0.4778,
+    -0.8027,
+    -0.3568
+   ],
+   "outward": [
+    0.1361,
+    -0.4689,
+    0.8727
+   ],
+   "normal": [
+    0.8679,
+    -0.3684,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_03",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_00"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.6332,
+    -1.6914,
+    0.2887
+   ],
+   "along": [
+    0.121,
+    0.8075,
+    -0.5774
+   ],
+   "outward": [
+    -0.4818,
+    -0.4607,
+    -0.7454
+   ],
+   "normal": [
+    0.8679,
+    -0.3684,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_04",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_05"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.7647,
+    -1.5219,
+    0.2887
+   ],
+   "along": [
+    -0.6388,
+    0.5085,
+    0.5774
+   ],
+   "outward": [
+    -0.3842,
+    -0.861,
+    0.3333
+   ],
+   "normal": [
+    -0.6666,
+    0.0089,
+    -0.7454
+   ]
+  },
+  {
+   "tile": "dome_04",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_07"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.758,
+    -1.0219,
+    0.2887
+   ],
+   "along": [
+    0.6521,
+    0.4914,
+    -0.5774
+   ],
+   "outward": [
+    -0.3611,
+    0.8709,
+    0.3333
+   ],
+   "normal": [
+    -0.6666,
+    0.0089,
+    -0.7454
+   ]
+  },
+  {
+   "tile": "dome_04",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "open",
+   "mates": [],
+   "gap": 0.5,
+   "pos": [
+    -1.4386,
+    -1.2762,
+    0.0
+   ],
+   "along": [
+    -0.0133,
+    -0.9999,
+    -0.0
+   ],
+   "outward": [
+    0.7453,
+    -0.0099,
+    -0.6667
+   ],
+   "normal": [
+    -0.6666,
+    0.0089,
+    -0.7454
+   ]
+  },
+  {
+   "tile": "dome_05",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_06"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.5365,
+    -1.9294,
+    0.4671
+   ],
+   "along": [
+    -0.1825,
+    -0.3066,
+    0.9342
+   ],
+   "outward": [
+    0.6323,
+    -0.7642,
+    -0.1273
+   ],
+   "normal": [
+    -0.753,
+    -0.5674,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_05",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_08"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.8559,
+    -1.6752,
+    0.7558
+   ],
+   "along": [
+    -0.4563,
+    0.8152,
+    -0.3568
+   ],
+   "outward": [
+    -0.4742,
+    0.1166,
+    0.8727
+   ],
+   "normal": [
+    -0.753,
+    -0.5674,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_05",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_04"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.7647,
+    -1.5219,
+    0.2887
+   ],
+   "along": [
+    0.6388,
+    -0.5085,
+    -0.5774
+   ],
+   "outward": [
+    -0.1581,
+    0.6477,
+    -0.7454
+   ],
+   "normal": [
+    -0.753,
+    -0.5674,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_06",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_00"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.0695,
+    -1.9356,
+    0.2887
+   ],
+   "along": [
+    0.7516,
+    -0.319,
+    0.5774
+   ],
+   "outward": [
+    0.6447,
+    0.1699,
+    -0.7454
+   ],
+   "normal": [
+    -0.1397,
+    -0.9324,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_06",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_09"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.1607,
+    -2.0889,
+    0.7558
+   ],
+   "along": [
+    -0.9341,
+    0.0124,
+    0.3568
+   ],
+   "outward": [
+    0.3286,
+    -0.3612,
+    0.8727
+   ],
+   "normal": [
+    -0.1397,
+    -0.9324,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_06",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_05"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.5365,
+    -1.9294,
+    0.4671
+   ],
+   "along": [
+    0.1825,
+    0.3066,
+    -0.9342
+   ],
+   "outward": [
+    -0.9732,
+    0.1914,
+    -0.1273
+   ],
+   "normal": [
+    -0.1397,
+    -0.9324,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_07",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_04"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.758,
+    -1.0219,
+    0.2887
+   ],
+   "along": [
+    -0.6521,
+    -0.4914,
+    0.5774
+   ],
+   "outward": [
+    -0.1752,
+    -0.6432,
+    -0.7454
+   ],
+   "normal": [
+    -0.7376,
+    0.5872,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_07",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_11"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.8452,
+    -0.8662,
+    0.7558
+   ],
+   "along": [
+    0.4778,
+    0.8027,
+    0.3568
+   ],
+   "outward": [
+    -0.4771,
+    -0.1039,
+    0.8727
+   ],
+   "normal": [
+    -0.7376,
+    0.5872,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_07",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_cube_front",
+    "nose_cube_side_dome"
+   ],
+   "gap": 0.1264,
+   "pos": [
+    -1.5192,
+    -0.6205,
+    0.4671
+   ],
+   "along": [
+    0.1743,
+    -0.3114,
+    -0.9342
+   ],
+   "outward": [
+    0.6523,
+    0.7472,
+    -0.1273
+   ],
+   "normal": [
+    -0.7376,
+    0.5872,
+    -0.3333
+   ]
+  },
+  {
+   "tile": "dome_08",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_10"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.6775,
+    -1.6775,
+    1.2228
+   ],
+   "along": [
+    -0.0995,
+    0.8104,
+    0.5774
+   ],
+   "outward": [
+    0.4694,
+    -0.4734,
+    0.7454
+   ],
+   "normal": [
+    -0.8773,
+    -0.3452,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_08",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_11"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.9057,
+    -1.27,
+    1.0444
+   ],
+   "along": [
+    -0.3568,
+    0.0047,
+    -0.9342
+   ],
+   "outward": [
+    -0.3209,
+    0.9385,
+    0.1273
+   ],
+   "normal": [
+    -0.8773,
+    -0.3452,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_08",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_05"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.8559,
+    -1.6752,
+    0.7558
+   ],
+   "along": [
+    0.4563,
+    -0.8152,
+    0.3568
+   ],
+   "outward": [
+    -0.1485,
+    -0.4652,
+    -0.8727
+   ],
+   "normal": [
+    -0.8773,
+    -0.3452,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_09",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_06"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.1607,
+    -2.0889,
+    0.7558
+   ],
+   "along": [
+    0.9341,
+    -0.0124,
+    -0.3568
+   ],
+   "outward": [
+    -0.338,
+    -0.3524,
+    -0.8727
+   ],
+   "normal": [
+    0.1149,
+    -0.9358,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_09",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_14"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.7808,
+    -1.9395,
+    1.0444
+   ],
+   "along": [
+    -0.1743,
+    0.3114,
+    0.9342
+   ],
+   "outward": [
+    0.978,
+    0.1654,
+    0.1273
+   ],
+   "normal": [
+    0.1149,
+    -0.9358,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_09",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_10"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.2479,
+    -1.9333,
+    1.2228
+   ],
+   "along": [
+    -0.7598,
+    -0.2989,
+    -0.5774
+   ],
+   "outward": [
+    -0.6399,
+    0.1869,
+    0.7454
+   ],
+   "normal": [
+    0.1149,
+    -0.9358,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_10",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_09"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.2479,
+    -1.9333,
+    1.2228
+   ],
+   "along": [
+    0.7598,
+    0.2989,
+    0.5774
+   ],
+   "outward": [
+    0.5536,
+    -0.7632,
+    -0.3333
+   ],
+   "normal": [
+    -0.341,
+    -0.5729,
+    0.7454
+   ]
+  },
+  {
+   "tile": "dome_10",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_16"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.2976,
+    -1.5281,
+    1.5115
+   ],
+   "along": [
+    -0.8593,
+    0.5115,
+    0.0
+   ],
+   "outward": [
+    0.3812,
+    0.6405,
+    0.6667
+   ],
+   "normal": [
+    -0.341,
+    -0.5729,
+    0.7454
+   ]
+  },
+  {
+   "tile": "dome_10",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_08"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.6775,
+    -1.6775,
+    1.2228
+   ],
+   "along": [
+    0.0995,
+    -0.8104,
+    -0.5774
+   ],
+   "outward": [
+    -0.9348,
+    0.1227,
+    -0.3333
+   ],
+   "normal": [
+    -0.341,
+    -0.5729,
+    0.7454
+   ]
+  },
+  {
+   "tile": "dome_11",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_07"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.8452,
+    -0.8662,
+    0.7558
+   ],
+   "along": [
+    -0.4778,
+    -0.8027,
+    -0.3568
+   ],
+   "outward": [
+    -0.1361,
+    0.4689,
+    -0.8727
+   ],
+   "normal": [
+    -0.8679,
+    0.3684,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_11",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_08"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.9057,
+    -1.27,
+    1.0444
+   ],
+   "along": [
+    0.3568,
+    -0.0047,
+    0.9342
+   ],
+   "outward": [
+    -0.3457,
+    -0.9297,
+    0.1273
+   ],
+   "normal": [
+    -0.8679,
+    0.3684,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_11",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_12"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.6668,
+    -0.8686,
+    1.2228
+   ],
+   "along": [
+    0.121,
+    0.8075,
+    -0.5774
+   ],
+   "outward": [
+    0.4818,
+    0.4607,
+    0.7454
+   ],
+   "normal": [
+    -0.8679,
+    0.3684,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_12",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_11"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.6668,
+    -0.8686,
+    1.2228
+   ],
+   "along": [
+    -0.121,
+    -0.8075,
+    0.5774
+   ],
+   "outward": [
+    -0.9377,
+    -0.0978,
+    -0.3333
+   ],
+   "normal": [
+    -0.3256,
+    0.5817,
+    0.7454
+   ]
+  },
+  {
+   "tile": "dome_12",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_16"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.291,
+    -1.0281,
+    1.5115
+   ],
+   "along": [
+    0.8726,
+    0.4885,
+    0.0
+   ],
+   "outward": [
+    0.3641,
+    -0.6504,
+    0.6667
+   ],
+   "normal": [
+    -0.3256,
+    0.5817,
+    0.7454
+   ]
+  },
+  {
+   "tile": "dome_12",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_pod_up_dome"
+   ],
+   "gap": 0.2857,
+   "pos": [
+    -1.2305,
+    -0.6244,
+    1.2228
+   ],
+   "along": [
+    -0.7516,
+    0.319,
+    -0.5774
+   ],
+   "outward": [
+    0.5737,
+    0.7482,
+    -0.3333
+   ],
+   "normal": [
+    -0.3256,
+    0.5817,
+    0.7454
+   ]
+  },
+  {
+   "tile": "dome_13",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "loose",
+   "mates": [
+    "nose_cube_roof",
+    "nose_cube_side_dome",
+    "nose_pod_up_dome"
+   ],
+   "gap": 0.2738,
+   "pos": [
+    -0.7635,
+    -0.6306,
+    1.0444
+   ],
+   "along": [
+    -0.1825,
+    -0.3066,
+    0.9342
+   ],
+   "outward": [
+    -0.6323,
+    0.7642,
+    0.1273
+   ],
+   "normal": [
+    0.753,
+    0.5674,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_13",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_15"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5353,
+    -1.0381,
+    1.2228
+   ],
+   "along": [
+    0.6388,
+    -0.5085,
+    -0.5774
+   ],
+   "outward": [
+    0.1581,
+    -0.6477,
+    0.7454
+   ],
+   "normal": [
+    0.753,
+    0.5674,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_13",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_02"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.4441,
+    -0.8848,
+    0.7558
+   ],
+   "along": [
+    -0.4563,
+    0.8152,
+    -0.3568
+   ],
+   "outward": [
+    0.4742,
+    -0.1166,
+    -0.8727
+   ],
+   "normal": [
+    0.753,
+    0.5674,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_14",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_03"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.4548,
+    -1.6938,
+    0.7558
+   ],
+   "along": [
+    0.4778,
+    0.8027,
+    0.3568
+   ],
+   "outward": [
+    0.4771,
+    0.1039,
+    -0.8727
+   ],
+   "normal": [
+    0.7376,
+    -0.5872,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_14",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_15"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.542,
+    -1.5381,
+    1.2228
+   ],
+   "along": [
+    -0.6521,
+    -0.4914,
+    0.5774
+   ],
+   "outward": [
+    0.1752,
+    0.6432,
+    0.7454
+   ],
+   "normal": [
+    0.7376,
+    -0.5872,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_14",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_09"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.7808,
+    -1.9395,
+    1.0444
+   ],
+   "along": [
+    0.1743,
+    -0.3114,
+    -0.9342
+   ],
+   "outward": [
+    -0.6523,
+    -0.7472,
+    0.1273
+   ],
+   "normal": [
+    0.7376,
+    -0.5872,
+    0.3333
+   ]
+  },
+  {
+   "tile": "dome_15",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_13"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.5353,
+    -1.0381,
+    1.2228
+   ],
+   "along": [
+    -0.6388,
+    0.5085,
+    0.5774
+   ],
+   "outward": [
+    0.3842,
+    0.861,
+    -0.3333
+   ],
+   "normal": [
+    0.6666,
+    -0.0089,
+    0.7454
+   ]
+  },
+  {
+   "tile": "dome_15",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_16"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.8614,
+    -1.2838,
+    1.5115
+   ],
+   "along": [
+    -0.0133,
+    -0.9999,
+    -0.0
+   ],
+   "outward": [
+    -0.7453,
+    0.0099,
+    0.6667
+   ],
+   "normal": [
+    0.6666,
+    -0.0089,
+    0.7454
+   ]
+  },
+  {
+   "tile": "dome_15",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_14"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.542,
+    -1.5381,
+    1.2228
+   ],
+   "along": [
+    0.6521,
+    0.4914,
+    -0.5774
+   ],
+   "outward": [
+    0.3611,
+    -0.8709,
+    -0.3333
+   ],
+   "normal": [
+    0.6666,
+    -0.0089,
+    0.7454
+   ]
+  },
+  {
+   "tile": "dome_16",
+   "group": "dome",
+   "edge": 0,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_10"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.2976,
+    -1.5281,
+    1.5115
+   ],
+   "along": [
+    0.8593,
+    -0.5115,
+    0.0
+   ],
+   "outward": [
+    -0.5115,
+    -0.8593,
+    -0.0
+   ],
+   "normal": [
+    -0.0,
+    -0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "dome_16",
+   "group": "dome",
+   "edge": 1,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_15"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -0.8614,
+    -1.2838,
+    1.5115
+   ],
+   "along": [
+    0.0133,
+    0.9999,
+    0.0
+   ],
+   "outward": [
+    0.9999,
+    -0.0133,
+    0.0
+   ],
+   "normal": [
+    -0.0,
+    -0.0,
+    1.0
+   ]
+  },
+  {
+   "tile": "dome_16",
+   "group": "dome",
+   "edge": 2,
+   "slot": 0,
+   "status": "mated",
+   "mates": [
+    "dome_12"
+   ],
+   "gap": 0.0,
+   "pos": [
+    -1.291,
+    -1.0281,
+    1.5115
+   ],
+   "along": [
+    -0.8726,
+    -0.4885,
+    -0.0
+   ],
+   "outward": [
+    -0.4885,
+    0.8726,
+    0.0
+   ],
+   "normal": [
+    -0.0,
+    -0.0,
+    1.0
+   ]
+  }
+ ]
+}
