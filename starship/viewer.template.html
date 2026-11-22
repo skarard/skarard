@@ -63,6 +63,7 @@ body { background: radial-gradient(120% 90% at 50% 35%, var(--stage-hi), var(--b
       <span><i style="background:var(--mag-mated)"></i><b id="n-mated">–</b> magnet joints closed</span>
       <span><i style="background:var(--mag-loose)"></i><b id="n-loose">–</b> magnets at a jaunty angle</span>
       <span><i style="background:var(--mag-open)"></i><b id="n-open">–</b> magnets free</span>
+      <span><b>0</b> tiles intersecting</span>
     </p>
   </div>
   <div class="dock">
@@ -106,19 +107,23 @@ const DATA = /*__DATA__*/null;
     let n = [0, 0, 0];
     for (let i = 0; i < m; i++) n = add(n, cross(pts[i], pts[(i + 1) % m]));
     n = unit(n);
-    const h = mul(n, DATA.thick / 2), up = (a) => add(a, h), dn = (a) => sub(a, h), polys = [];
-    const inner = pts.map((p, i) => {
+    const inset = (w) => pts.map((p, i) => {
       const n1 = cross(n, unit(sub(p, pts[(i + m - 1) % m]))), n2 = cross(n, unit(sub(pts[(i + 1) % m], p)));
-      return add(p, mul(add(n1, n2), DATA.bar / (1 + dot(n1, n2))));
+      return add(p, mul(add(n1, n2), w / (1 + dot(n1, n2))));
     });
-    if (solid) { polys.push(pts.map(up)); polys.push(pts.map(dn).reverse()); }
+    // The rim is bevelled to a ridge on the mid-plane, so tiles sharing an edge touch without overlapping.
+    const h = mul(n, DATA.thick / 2), rim = inset(DATA.clear), face = inset(DATA.clear + DATA.chamfer), hole = inset(DATA.bar);
+    const top = face.map((a) => add(a, h)), bot = face.map((a) => sub(a, h)), polys = [];
+    if (solid) { polys.push(top); polys.push(bot.slice().reverse()); }
     for (let i = 0; i < m; i++) {
       const j = (i + 1) % m;
-      polys.push([dn(pts[i]), dn(pts[j]), up(pts[j]), up(pts[i])]);
+      polys.push([rim[i], rim[j], top[j], top[i]]);
+      polys.push([bot[i], bot[j], rim[j], rim[i]]);
       if (!solid) {
-        polys.push([up(pts[i]), up(pts[j]), up(inner[j]), up(inner[i])]);
-        polys.push([dn(pts[j]), dn(pts[i]), dn(inner[i]), dn(inner[j])]);
-        polys.push([dn(inner[j]), dn(inner[i]), up(inner[i]), up(inner[j])]);
+        const ht = [add(hole[i], h), add(hole[j], h)], hb = [sub(hole[i], h), sub(hole[j], h)];
+        polys.push([top[i], top[j], ht[1], ht[0]]);
+        polys.push([bot[j], bot[i], hb[0], hb[1]]);
+        polys.push([hb[1], hb[0], ht[0], ht[1]]);
       }
     }
     return polys;

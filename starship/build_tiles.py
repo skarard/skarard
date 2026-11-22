@@ -24,6 +24,8 @@ TALL = math.sqrt(2.0**2 - 0.25)  # slant height of the tall isosceles tile (base
 S = 0.5 + H3                     # y of the outrigger prism faces
 BAR = 0.13                       # frame bar width
 THICK = 0.05                     # tile thickness
+CHAMFER = 0.05                   # rim bevel: each tile tapers to its edge so neighbours can hinge there
+CLEAR = 0.006                    # hairline clearance pulled in from the ideal edge line
 
 COLORS = {
     "red": "#e0262b", "orange": "#f07a1a", "yellow": "#f2c81e", "green": "#4fb53a",
@@ -92,7 +94,7 @@ wall("wing_prism_wall_tail", "yellow", g, (1, S), (0.5, 0.5))
 wall("wing_infill_wall", "magenta", g, (0, S), (-0.5, 0.5))
 flat("wing_prism_roof", "cyan", g, [(0, S), (1, S), (0.5, 0.5)], 1)
 flat("wing_infill_roof", "pink", g, [(0, S), (-0.5, 0.5), (0.5, 0.5)], 1)
-flat("wing_trapezoid", "pink", g, [(-0.5, 0.5), (-1.5, 0.5), (-2, S), (0, S)], THICK / 2)
+flat("wing_trapezoid", "pink", g, [(-0.5, 0.5), (-1.5, 0.5), (-2, S), (0, S)], 0)
 
 # Dome-side outrigger: mirrored prism.
 g = "outrigger_dome"
@@ -109,12 +111,14 @@ lean_spire = math.asin(0.5 / TALL)
 hinge("spire_wing", "pink", g, P(-0.5, 0.5, 1), P(0.5, 0.5, 1), "tall", (0, -1, 0), lean_spire)
 hinge("spire_dome", "green", g, P(-0.5, -0.5, 1), P(0.5, -0.5, 1), "tall", (0, 1, 0), lean_spire)
 
-# Pods: a square roof floating over each end cube, pulled 0.25 toward the spire,
-# carried by one leaning end square and up/down triangle pairs on the flanks.
-SHIFT = 0.25
+# Pods: a square roof over each end cube, pulled 0.2 toward the spire and hinged on
+# one leaning end square. On each flank an up triangle leans inward from the cube and
+# a down triangle hangs from the roof, swung outward so it shingles over the up one.
+SHIFT = 0.2
 lean_end = math.asin(SHIFT)
 zt = 1 + math.cos(lean_end)
 lean_up = math.radians(10)
+swing_down = math.radians(8)
 for pod, sx, c_end, c_top, c_down_w, c_down_d in (
         ("nose_pod", -1, "red", "blue", "red", "red"),
         ("tail_pod", 1, "purple", "red", "yellow", "orange")):
@@ -124,8 +128,8 @@ for pod, sx, c_end, c_top, c_down_w, c_down_d in (
     flat(f"{pod}_roof", c_top, pod, [(to, -0.5), (ti, -0.5), (ti, 0.5), (to, 0.5)], zt)
     hinge(f"{pod}_up_wing", "pink", pod, P(xo, 0.5, 1), P(xi, 0.5, 1), "tri", (0, -1, 0), lean_up)
     hinge(f"{pod}_up_dome", "green", pod, P(xo, -0.5, 1), P(xi, -0.5, 1), "tri", (0, 1, 0), lean_up)
-    hinge(f"{pod}_down_wing", c_down_w, pod, P(to, 0.5, zt), P(ti, 0.5, zt), "tri", down=True)
-    hinge(f"{pod}_down_dome", c_down_d, pod, P(to, -0.5, zt), P(ti, -0.5, zt), "tri", down=True)
+    hinge(f"{pod}_down_wing", c_down_w, pod, P(to, 0.5, zt), P(ti, 0.5, zt), "tri", (0, 1, 0), swing_down, down=True)
+    hinge(f"{pod}_down_dome", c_down_d, pod, P(to, -0.5, zt), P(ti, -0.5, zt), "tri", (0, -1, 0), swing_down, down=True)
 
 # ---------------------------------------------------------------- side dome
 # The ball of triangles beside the nose cube: an icosahedron resting on one face,
@@ -243,50 +247,109 @@ def find_magnets():
     return mags, list(joints.values())
 
 
-magnets, joints = find_magnets()
-
-
 # ---------------------------------------------------------------- meshing
-def tile_frame(pts):
-    """Orthonormal frame + inset loop for a planar convex tile."""
-    pts = np.array(pts)
-    n = np.zeros(3)
-    for i in range(len(pts)):
-        n += np.cross(pts[i], pts[(i + 1) % len(pts)])
-    n /= np.linalg.norm(n)
-    inner = []
+def inset(pts, n, w):
     m = len(pts)
+    out = []
     for i in range(m):
         e1 = pts[i] - pts[i - 1]
         e2 = pts[(i + 1) % m] - pts[i]
         n1 = np.cross(n, e1 / np.linalg.norm(e1))
         n2 = np.cross(n, e2 / np.linalg.norm(e2))
-        inner.append(pts[i] + BAR * (n1 + n2) / (1 + np.dot(n1, n2)))
-    return pts, n, np.array(inner)
+        out.append(pts[i] + w * (n1 + n2) / (1 + np.dot(n1, n2)))
+    return np.array(out)
 
 
 def mesh_tile(pts, mode):
-    """Returns (vertices, polygon faces) for one tile; faces wind outward."""
-    pts, n, inner = tile_frame(pts)
+    """Returns (vertices, polygon faces) for one tile; faces wind outward.
+
+    The rim is bevelled to a ridge on the tile's mid-plane, so tiles that share an
+    edge touch along a line (like the rounded rims of the toy) instead of overlapping.
+    """
+    pts = np.array(pts)
     m = len(pts)
+    n = np.zeros(3)
+    for i in range(m):
+        n += np.cross(pts[i], pts[(i + 1) % m])
+    n /= np.linalg.norm(n)
     h = n * THICK / 2
+    mid = inset(pts, n, CLEAR)
+    face = inset(pts, n, CLEAR + CHAMFER)
     if mode == "panels":
-        v = np.vstack([pts + h, pts - h])
-        faces = [list(range(m)), list(range(2 * m - 1, m - 1, -1))]
-        for i in range(m):
-            j = (i + 1) % m
-            faces.append([m + i, m + j, j, i])
-        return v, faces
-    v = np.vstack([pts + h, pts - h, inner + h, inner - h])  # ot, ob, it, ib
-    ot, ob, it, ib = 0, m, 2 * m, 3 * m
-    faces = []
+        v = np.vstack([face + h, mid, face - h])
+        top, rim, bot = 0, m, 2 * m
+        faces = [list(range(m)), list(range(3 * m - 1, 2 * m - 1, -1))]
+    else:
+        hole = inset(pts, n, BAR)
+        v = np.vstack([face + h, mid, face - h, hole + h, hole - h])
+        top, rim, bot, it, ib = 0, m, 2 * m, 3 * m, 4 * m
+        faces = []
     for i in range(m):
         j = (i + 1) % m
-        faces.append([ot + i, ot + j, it + j, it + i])
-        faces.append([ob + j, ob + i, ib + i, ib + j])
-        faces.append([ob + i, ob + j, ot + j, ot + i])
-        faces.append([ib + j, ib + i, it + i, it + j])
+        faces.append([rim + i, rim + j, top + j, top + i])
+        faces.append([bot + i, bot + j, rim + j, rim + i])
+        if mode != "panels":
+            faces.append([top + i, top + j, it + j, it + i])
+            faces.append([bot + j, bot + i, ib + i, ib + j])
+            faces.append([ib + j, ib + i, it + i, it + j])
     return v, faces
+
+
+# ---------------------------------------------------------------- collision check
+# Every tile's solid (the panel form, which contains the frame form) is convex, so a
+# separating-axis test is exact: two tiles are clear if some axis separates them.
+def solid(t):
+    v, faces = mesh_tile(t["pts"], "panels")
+    normals, dirs = [], []
+    for f in faces:
+        nn = np.cross(v[f[1]] - v[f[0]], v[f[2]] - v[f[0]])
+        normals.append(nn / np.linalg.norm(nn))
+        for i in range(len(f)):
+            d = v[f[(i + 1) % len(f)]] - v[f[i]]
+            d /= np.linalg.norm(d)
+            if not any(abs(abs(np.dot(d, e)) - 1) < 1e-6 for e in dirs):
+                dirs.append(d)
+    return v, np.array(normals), np.array(dirs)
+
+
+def penetration(a, b):
+    """Depth by which two convex solids overlap; <= 0 means they are clear."""
+    va, na, da = a
+    vb, nb, db = b
+    if np.linalg.norm(va.mean(0) - vb.mean(0)) > 3.2:
+        return -1.0
+    ax = np.cross(da[:, None, :], db[None, :, :]).reshape(-1, 3)
+    ln = np.linalg.norm(ax, axis=1)
+    ax = np.vstack([na, nb, ax[ln > 1e-6] / ln[ln > 1e-6, None]])
+    pa, pb = va @ ax.T, vb @ ax.T
+    sep = np.maximum(pa.min(0) - pb.max(0), pb.min(0) - pa.max(0))
+    return float(-sep.max())
+
+
+def collisions(subset=None):
+    sol = [solid(t) for t in tiles]
+    hits = []
+    for i in range(len(tiles)):
+        for j in range(i + 1, len(tiles)):
+            if subset is not None and i not in subset and j not in subset:
+                continue
+            d = penetration(sol[i], sol[j])
+            if d > 1e-4:
+                hits.append((d, i, j))
+    return hits
+
+
+# The dome keeps only the faces that clear the hull.
+while True:
+    dome_idx = {i for i, t in enumerate(tiles) if t["group"] == "dome"}
+    bad = {i if i in dome_idx else j for _, i, j in collisions(dome_idx)
+           if (i in dome_idx) != (j in dome_idx)}
+    if not bad:
+        break
+    tiles[:] = [t for i, t in enumerate(tiles) if i not in bad]
+
+
+magnets, joints = find_magnets()
 
 
 # ---------------------------------------------------------------- exporters
@@ -410,7 +473,7 @@ def write_viewer(template, path):
         else:
             marks += [(m_["pos"], m_["dir"], m_["status"]) for m_ in js_]
     r4 = lambda a: [round(float(x), 4) for x in a]
-    data = {"bar": BAR, "thick": THICK, "colors": COLORS,
+    data = {"bar": BAR, "thick": THICK, "chamfer": CHAMFER, "clear": CLEAR, "colors": COLORS,
             "magnets": [{"p": r4(p), "d": r4(d), "s": st} for p, d, st in marks],
             "stats": {st: sum(1 for m_ in magnets if m_["status"] == st) for st in ("mated", "loose", "open")},
             "joints": sum(1 for j_ in joints if j_[0]["status"] == "mated"),
@@ -424,6 +487,12 @@ def write_viewer(template, path):
 
 
 if __name__ == "__main__":
+    hits = collisions()
+    for d, i, j in sorted(hits, reverse=True):
+        print(f"  INTERSECT {tiles[i]['name']} x {tiles[j]['name']}  depth {d:.4f}")
+    if hits:
+        raise SystemExit(f"{len(hits)} intersecting tile pairs - not exporting")
+    print("collision check: 0 intersecting pairs")
     here = os.path.dirname(os.path.abspath(__file__))
     out = os.path.join(here, "out")
     os.makedirs(out, exist_ok=True)
