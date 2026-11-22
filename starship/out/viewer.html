@@ -1,0 +1,206 @@
+<title>Tile Starship Blockout</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one full-bleed 3D stage; a title plate top-left, one control dock along the bottom. */
+:root {
+  --bg: #e9ecf1; --stage-hi: #f7f8fb; --fg: #161a22; --muted: #5b6474;
+  --panel: rgba(255,255,255,.82); --line: #c5ccd8; --accent: #d6336c; --on-accent: #ffffff;
+  --grid: #b9c1cf; --clay: #9aa3b2;
+  --display: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #10131a; --stage-hi: #1b2130; --fg: #eef1f6; --muted: #98a2b5;
+  --panel: rgba(22,27,38,.82); --line: #343c4d; --accent: #ff6fa3; --on-accent: #1a0710;
+  --grid: #39425a; --clay: #7d879a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #10131a; --stage-hi: #1b2130; --fg: #eef1f6; --muted: #98a2b5;
+  --panel: rgba(22,27,38,.82); --line: #343c4d; --accent: #ff6fa3; --on-accent: #1a0710;
+  --grid: #39425a; --clay: #7d879a; color-scheme: dark }
+
+html, body { height: 100%; }
+body { background: radial-gradient(120% 90% at 50% 35%, var(--stage-hi), var(--bg)); background-color: var(--bg);
+  color: var(--fg); font-family: var(--mono); font-size: 13px; overflow: hidden; }
+#stage { position: relative; height: 100%; }
+#stage canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+#stage canvas:active { cursor: grabbing; }
+
+.plate { position: absolute; top: 14px; left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px));
+  pointer-events: none; display: flex; flex-direction: column; gap: 4px; }
+.plate h1 { margin: 0; font: 700 clamp(20px, 3.4vw, 30px)/1.05 var(--display); letter-spacing: -.01em; text-wrap: balance; }
+.plate p { margin: 0; color: var(--muted); font-variant-numeric: tabular-nums; }
+.plate b { color: var(--fg); font-weight: 500; }
+
+.dock { position: absolute; bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-wrap: wrap; gap: 8px 14px; justify-content: center; pointer-events: none; }
+.group { pointer-events: auto; display: flex; align-items: center; gap: 2px; padding: 3px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 9px; backdrop-filter: blur(8px); }
+.group span { padding: 0 8px 0 7px; color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.group button { font: 500 12.5px var(--mono); color: var(--fg); background: none; border: 0; border-radius: 6px;
+  padding: 7px 10px; cursor: pointer; }
+.group button:hover { background: color-mix(in srgb, var(--fg) 9%, transparent); }
+.group button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.group button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+#fail { position: absolute; inset: 40% 16px auto; text-align: center; color: var(--muted); }
+</style>
+
+<div id="stage">
+  <div class="plate">
+    <h1>Tile Starship Blockout</h1>
+    <p><b id="count">–</b> tiles · <b id="size">–</b> tile edges (L × W × H) · grid square = 1 tile edge</p>
+  </div>
+  <p id="fail" hidden>The 3D view could not start in this browser.</p>
+  <div class="dock">
+    <div class="group" role="group" aria-label="Surface">
+      <span>Surface</span>
+      <button id="mode-frames" data-mode="frames" aria-pressed="true">Frames</button>
+      <button id="mode-panels" data-mode="panels" aria-pressed="false">Panels</button>
+      <button id="mode-clay" data-mode="clay" aria-pressed="false">Clay</button>
+    </div>
+    <div class="group" role="group" aria-label="Camera">
+      <span>View</span>
+      <button id="view-wing" data-view="wing">Wing side</button>
+      <button id="view-dome" data-view="dome">Dome side</button>
+      <button id="view-nose" data-view="nose">Nose</button>
+      <button id="view-tail" data-view="tail">Tail</button>
+      <button id="view-top" data-view="top">Top</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+const DATA = {"bar":0.13,"thick":0.05,"colors":{"red":"#e0262b","orange":"#f07a1a","yellow":"#f2c81e","green":"#4fb53a","blue":"#2456d6","purple":"#8a3fc0","pink":"#ec5fa8","magenta":"#c2289a","cyan":"#2aa7de"},"tiles":[{"n":"nose_cube_front","g":"spine","c":"purple","p":[[-1.5,-0.5,0.0],[-1.5,0.5,0.0],[-1.5,0.5,1.0],[-1.5,-0.5,1.0]]},{"n":"nose_cube_side_wing","g":"spine","c":"pink","p":[[-1.5,0.5,0.0],[-0.5,0.5,0.0],[-0.5,0.5,1.0],[-1.5,0.5,1.0]]},{"n":"nose_cube_side_dome","g":"spine","c":"blue","p":[[-1.5,-0.5,0.0],[-0.5,-0.5,0.0],[-0.5,-0.5,1.0],[-1.5,-0.5,1.0]]},{"n":"nose_cube_bulkhead","g":"spine","c":"orange","p":[[-0.5,-0.5,0.0],[-0.5,0.5,0.0],[-0.5,0.5,1.0],[-0.5,-0.5,1.0]]},{"n":"nose_cube_roof","g":"spine","c":"yellow","p":[[-1.5,-0.5,1.0],[-0.5,-0.5,1.0],[-0.5,0.5,1.0],[-1.5,0.5,1.0]]},{"n":"centre_side_wing","g":"spine","c":"yellow","p":[[-0.5,0.5,0.0],[0.5,0.5,0.0],[0.5,0.5,1.0],[-0.5,0.5,1.0]]},{"n":"centre_side_dome","g":"spine","c":"orange","p":[[-0.5,-0.5,0.0],[0.5,-0.5,0.0],[0.5,-0.5,1.0],[-0.5,-0.5,1.0]]},{"n":"centre_bulkhead","g":"spine","c":"red","p":[[0.5,-0.5,0.0],[0.5,0.5,0.0],[0.5,0.5,1.0],[0.5,-0.5,1.0]]},{"n":"centre_roof","g":"spine","c":"green","p":[[-0.5,-0.5,1.0],[0.5,-0.5,1.0],[0.5,0.5,1.0],[-0.5,0.5,1.0]]},{"n":"tail_cube_side_wing","g":"spine","c":"yellow","p":[[0.5,0.5,0.0],[1.5,0.5,0.0],[1.5,0.5,1.0],[0.5,0.5,1.0]]},{"n":"tail_cube_side_dome","g":"spine","c":"orange","p":[[0.5,-0.5,0.0],[1.5,-0.5,0.0],[1.5,-0.5,1.0],[0.5,-0.5,1.0]]},{"n":"tail_cube_back","g":"spine","c":"yellow","p":[[1.5,-0.5,0.0],[1.5,0.5,0.0],[1.5,0.5,1.0],[1.5,-0.5,1.0]]},{"n":"tail_cube_roof","g":"spine","c":"orange","p":[[0.5,-0.5,1.0],[1.5,-0.5,1.0],[1.5,0.5,1.0],[0.5,0.5,1.0]]},{"n":"wing_prism_face","g":"outrigger_wing","c":"red","p":[[0.0,1.366,0.0],[1.0,1.366,0.0],[1.0,1.366,1.0],[0.0,1.366,1.0]]},{"n":"wing_prism_wall_nose","g":"outrigger_wing","c":"blue","p":[[0.0,1.366,0.0],[0.5,0.5,0.0],[0.5,0.5,1.0],[0.0,1.366,1.0]]},{"n":"wing_prism_wall_tail","g":"outrigger_wing","c":"yellow","p":[[1.0,1.366,0.0],[0.5,0.5,0.0],[0.5,0.5,1.0],[1.0,1.366,1.0]]},{"n":"wing_infill_wall","g":"outrigger_wing","c":"magenta","p":[[0.0,1.366,0.0],[-0.5,0.5,0.0],[-0.5,0.5,1.0],[0.0,1.366,1.0]]},{"n":"wing_prism_roof","g":"outrigger_wing","c":"cyan","p":[[0.0,1.366,1.0],[1.0,1.366,1.0],[0.5,0.5,1.0]]},{"n":"wing_infill_roof","g":"outrigger_wing","c":"pink","p":[[0.0,1.366,1.0],[-0.5,0.5,1.0],[0.5,0.5,1.0]]},{"n":"wing_trapezoid","g":"outrigger_wing","c":"pink","p":[[-0.5,0.5,0.025],[-1.5,0.5,0.025],[-2.0,1.366,0.025],[0.0,1.366,0.025]]},{"n":"dome_prism_face","g":"outrigger_dome","c":"orange","p":[[0.0,-1.366,0.0],[1.0,-1.366,0.0],[1.0,-1.366,1.0],[0.0,-1.366,1.0]]},{"n":"dome_prism_wall_nose","g":"outrigger_dome","c":"blue","p":[[0.0,-1.366,0.0],[0.5,-0.5,0.0],[0.5,-0.5,1.0],[0.0,-1.366,1.0]]},{"n":"dome_prism_wall_tail","g":"outrigger_dome","c":"yellow","p":[[1.0,-1.366,0.0],[0.5,-0.5,0.0],[0.5,-0.5,1.0],[1.0,-1.366,1.0]]},{"n":"dome_prism_roof","g":"outrigger_dome","c":"red","p":[[0.0,-1.366,1.0],[1.0,-1.366,1.0],[0.5,-0.5,1.0]]},{"n":"dome_infill_roof","g":"outrigger_dome","c":"purple","p":[[0.0,-1.366,1.0],[-0.5,-0.5,1.0],[0.5,-0.5,1.0]]},{"n":"spire_wing","g":"spire","c":"pink","p":[[-0.5,0.5,1.0],[0.5,0.5,1.0],[0.0,0.0,2.8708]]},{"n":"spire_dome","g":"spire","c":"green","p":[[-0.5,-0.5,1.0],[0.5,-0.5,1.0],[0.0,-0.0,2.8708]]},{"n":"nose_pod_end","g":"nose_pod","c":"red","p":[[-1.5,-0.5,1.0],[-1.5,0.5,1.0],[-1.25,0.5,1.9682],[-1.25,-0.5,1.9682]]},{"n":"nose_pod_roof","g":"nose_pod","c":"blue","p":[[-1.25,-0.5,1.9682],[-0.25,-0.5,1.9682],[-0.25,0.5,1.9682],[-1.25,0.5,1.9682]]},{"n":"nose_pod_up_wing","g":"nose_pod","c":"pink","p":[[-1.5,0.5,1.0],[-0.5,0.5,1.0],[-1.0,0.3496,1.8529]]},{"n":"nose_pod_up_dome","g":"nose_pod","c":"green","p":[[-1.5,-0.5,1.0],[-0.5,-0.5,1.0],[-1.0,-0.3496,1.8529]]},{"n":"nose_pod_down_wing","g":"nose_pod","c":"red","p":[[-1.25,0.5,1.9682],[-0.25,0.5,1.9682],[-0.75,0.5,1.1022]]},{"n":"nose_pod_down_dome","g":"nose_pod","c":"red","p":[[-1.25,-0.5,1.9682],[-0.25,-0.5,1.9682],[-0.75,-0.5,1.1022]]},{"n":"tail_pod_end","g":"tail_pod","c":"purple","p":[[1.5,-0.5,1.0],[1.5,0.5,1.0],[1.25,0.5,1.9682],[1.25,-0.5,1.9682]]},{"n":"tail_pod_roof","g":"tail_pod","c":"red","p":[[1.25,-0.5,1.9682],[0.25,-0.5,1.9682],[0.25,0.5,1.9682],[1.25,0.5,1.9682]]},{"n":"tail_pod_up_wing","g":"tail_pod","c":"pink","p":[[1.5,0.5,1.0],[0.5,0.5,1.0],[1.0,0.3496,1.8529]]},{"n":"tail_pod_up_dome","g":"tail_pod","c":"green","p":[[1.5,-0.5,1.0],[0.5,-0.5,1.0],[1.0,-0.3496,1.8529]]},{"n":"tail_pod_down_wing","g":"tail_pod","c":"yellow","p":[[1.25,0.5,1.9682],[0.25,0.5,1.9682],[0.75,0.5,1.1022]]},{"n":"tail_pod_down_dome","g":"tail_pod","c":"orange","p":[[1.25,-0.5,1.9682],[0.25,-0.5,1.9682],[0.75,-0.5,1.1022]]},{"n":"dome_00","g":"dome","c":"yellow","p":[[-0.5727,-1.2877,0.0],[-0.6937,-2.0952,0.5774],[-1.4453,-1.7761,0.0]]},{"n":"dome_01","g":"dome","c":"yellow","p":[[-0.5727,-1.2877,0.0],[-1.432,-0.7762,0.0],[-0.6722,-0.4773,0.5774]]},{"n":"dome_02","g":"dome","c":"purple","p":[[-0.5727,-1.2877,0.0],[-0.6722,-0.4773,0.5774],[-0.2159,-1.2924,0.9342]]},{"n":"dome_03","g":"dome","c":"yellow","p":[[-0.5727,-1.2877,0.0],[-0.2159,-1.2924,0.9342],[-0.6937,-2.0952,0.5774]]},{"n":"dome_04","g":"dome","c":"blue","p":[[-1.4453,-1.7761,0.0],[-2.0841,-1.2676,0.5774],[-1.432,-0.7762,0.0]]},{"n":"dome_05","g":"dome","c":"green","p":[[-1.4453,-1.7761,0.0],[-1.6278,-2.0827,0.9342],[-2.0841,-1.2676,0.5774]]},{"n":"dome_06","g":"dome","c":"yellow","p":[[-1.4453,-1.7761,0.0],[-0.6937,-2.0952,0.5774],[-1.6278,-2.0827,0.9342]]},{"n":"dome_07","g":"dome","c":"red","p":[[-1.432,-0.7762,0.0],[-2.0841,-1.2676,0.5774],[-1.6063,-0.4648,0.9342]]},{"n":"dome_08","g":"dome","c":"pink","p":[[-1.6278,-2.0827,0.9342],[-1.7273,-1.2723,1.5115],[-2.0841,-1.2676,0.5774]]},{"n":"dome_09","g":"dome","c":"yellow","p":[[-1.6278,-2.0827,0.9342],[-0.6937,-2.0952,0.5774],[-0.868,-1.7838,1.5115]]},{"n":"dome_10","g":"dome","c":"green","p":[[-1.6278,-2.0827,0.9342],[-0.868,-1.7838,1.5115],[-1.7273,-1.2723,1.5115]]},{"n":"dome_11","g":"dome","c":"purple","p":[[-1.6063,-0.4648,0.9342],[-2.0841,-1.2676,0.5774],[-1.7273,-1.2723,1.5115]]},{"n":"dome_12","g":"dome","c":"yellow","p":[[-1.6063,-0.4648,0.9342],[-1.7273,-1.2723,1.5115],[-0.8547,-0.7839,1.5115]]},{"n":"dome_13","g":"dome","c":"blue","p":[[-0.6722,-0.4773,0.5774],[-0.8547,-0.7839,1.5115],[-0.2159,-1.2924,0.9342]]},{"n":"dome_14","g":"dome","c":"red","p":[[-0.6937,-2.0952,0.5774],[-0.2159,-1.2924,0.9342],[-0.868,-1.7838,1.5115]]},{"n":"dome_15","g":"dome","c":"yellow","p":[[-0.2159,-1.2924,0.9342],[-0.8547,-0.7839,1.5115],[-0.868,-1.7838,1.5115]]},{"n":"dome_16","g":"dome","c":"yellow","p":[[-1.7273,-1.2723,1.5115],[-0.868,-1.7838,1.5115],[-0.8547,-0.7839,1.5115]]}]};
+(function () {
+  const stage = document.getElementById('stage');
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); }
+  catch (e) { document.getElementById('fail').hidden = false; return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  stage.prepend(renderer.domElement);
+
+  const V = (p) => new THREE.Vector3(p[0], p[2], -p[1]);   // build space is Z-up
+  const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+  // --- tile mesher: open frame or solid plate from a planar outline
+  function meshTile(tile, solid) {
+    const pts = tile.p.map(V), m = pts.length, n = new THREE.Vector3();
+    for (let i = 0; i < m; i++) n.add(pts[i].clone().cross(pts[(i + 1) % m]));
+    n.normalize();
+    const h = n.clone().multiplyScalar(DATA.thick / 2);
+    const inner = pts.map((p, i) => {
+      const e1 = p.clone().sub(pts[(i + m - 1) % m]).normalize(), e2 = pts[(i + 1) % m].clone().sub(p).normalize();
+      const n1 = n.clone().cross(e1), n2 = n.clone().cross(e2);
+      return p.clone().add(n1.clone().add(n2).multiplyScalar(DATA.bar / (1 + n1.dot(n2))));
+    });
+    const up = (a) => a.clone().add(h), dn = (a) => a.clone().sub(h), out = [];
+    const quad = (a, b, c, d) => out.push(a, b, c, a, c, d);
+    for (let i = 0; i < m; i++) {
+      const j = (i + 1) % m;
+      quad(dn(pts[i]), dn(pts[j]), up(pts[j]), up(pts[i]));
+      if (solid) {
+        if (i > 0 && i < m - 1) { out.push(up(pts[0]), up(pts[i]), up(pts[j])); out.push(dn(pts[0]), dn(pts[j]), dn(pts[i])); }
+      } else {
+        quad(up(pts[i]), up(pts[j]), up(inner[j]), up(inner[i]));
+        quad(dn(pts[j]), dn(pts[i]), dn(inner[i]), dn(inner[j]));
+        quad(dn(inner[j]), dn(inner[i]), up(inner[i]), up(inner[j]));
+      }
+    }
+    const g = new THREE.BufferGeometry().setFromPoints(out);
+    g.computeVertexNormals();
+    return g;
+  }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  const target = V([-0.25, -0.1, 1.05]);
+  controls.target.copy(target); controls.enableDamping = true; controls.dampingFactor = 0.09;
+  controls.minDistance = 2.5; controls.maxDistance = 22; controls.maxPolarAngle = Math.PI * 0.53;
+
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8fa0, 0.85));
+  const key = new THREE.DirectionalLight(0xffffff, 0.75); key.position.set(4, 9, 6); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xffffff, 0.3); rim.position.set(-6, 3, -5); scene.add(rim);
+
+  const mats = {}, clay = new THREE.MeshStandardMaterial({ roughness: 0.8, side: THREE.DoubleSide, flatShading: true });
+  for (const k in DATA.colors) mats[k] = new THREE.MeshStandardMaterial({
+    color: DATA.colors[k], roughness: 0.35, side: THREE.DoubleSide, flatShading: true });
+
+  const ship = new THREE.Group(); scene.add(ship);
+  const parts = DATA.tiles.map((t) => {
+    const mesh = new THREE.Mesh(undefined, mats[t.c]);
+    mesh.name = t.g + '.' + t.n;
+    mesh.userData = { tile: t, frames: meshTile(t, false), panels: meshTile(t, true) };
+    ship.add(mesh); return mesh;
+  });
+
+  let grid;
+  function paint() {
+    if (grid) scene.remove(grid);
+    grid = new THREE.GridHelper(12, 12, css('--grid'), css('--grid'));
+    grid.material.transparent = true; grid.material.opacity = 0.55; grid.position.set(0, -0.001, 0);
+    scene.add(grid);
+    clay.color.set(css('--clay'));
+    draw();
+  }
+
+  function setMode(mode) {
+    parts.forEach((m) => {
+      m.geometry = mode === 'frames' ? m.userData.frames : m.userData.panels;
+      m.material = mode === 'clay' ? clay : mats[m.userData.tile.c];
+    });
+    document.querySelectorAll('[data-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
+    draw();
+  }
+
+  // Camera stations, as offsets from the target in build space (x nose->tail, y dome->wing, z up).
+  const VIEWS = { wing: [1.6, 7.6, 3.4], dome: [-1.2, -8.2, 2.0], nose: [-7.6, -2.6, 2.9], tail: [6.0, -5.6, 1.6], top: [0.01, -1.2, 10.5], home: [-5.2, -6.4, 4.4] };
+  let fly = null;
+  function setView(name, instant) {
+    const to = target.clone().add(V(VIEWS[name]).sub(V([0, 0, 0])));
+    if (instant || matchMedia('(prefers-reduced-motion: reduce)').matches) { camera.position.copy(to); controls.target.copy(target); controls.update(); draw(); return; }
+    fly = { from: camera.position.clone(), to, tf: controls.target.clone(), t0: performance.now() };
+    loop();
+  }
+
+  let running = false, idleAt = 0;
+  function draw() { renderer.render(scene, camera); }
+  function loop() {
+    if (running) return; running = true;
+    (function tick(now) {
+      if (fly) {
+        const k = Math.min(1, (now - fly.t0) / 650), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        camera.position.lerpVectors(fly.from, fly.to, e); controls.target.lerpVectors(fly.tf, target, e);
+        if (k >= 1) fly = null; idleAt = now + 400;
+      }
+      controls.update(); draw();
+      if (now < idleAt || fly) requestAnimationFrame(tick); else running = false;
+    })(performance.now());
+  }
+  controls.addEventListener('start', () => { fly = null; idleAt = Infinity; loop(); });
+  controls.addEventListener('end', () => { idleAt = performance.now() + 1200; });
+  renderer.domElement.addEventListener('wheel', () => { idleAt = performance.now() + 1200; loop(); }, { passive: true });
+
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return;
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    camera.fov = w < h ? 52 : 36; camera.updateProjectionMatrix(); draw();
+  }
+  new ResizeObserver(resize).observe(stage);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);
+  new MutationObserver(paint).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  document.querySelectorAll('[data-mode]').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
+  document.querySelectorAll('[data-view]').forEach((b) => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  const box = new THREE.Box3().setFromPoints(DATA.tiles.flatMap((t) => t.p.map(V))), s = box.getSize(new THREE.Vector3());
+  document.getElementById('count').textContent = DATA.tiles.length;
+  document.getElementById('size').textContent = [s.x, s.z, s.y].map((v) => v.toFixed(1)).join(' × ');
+
+  setMode('frames'); setView('home', true); resize(); paint();
+  window.tileShip = { setMode, setView };
+})();
+</script>

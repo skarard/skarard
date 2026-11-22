@@ -1,0 +1,45 @@
+newmtl red
+Kd 0.8784 0.1490 0.1686
+Ks 0.3 0.3 0.3
+Ns 60
+
+newmtl orange
+Kd 0.9412 0.4784 0.1020
+Ks 0.3 0.3 0.3
+Ns 60
+
+newmtl yellow
+Kd 0.9490 0.7843 0.1176
+Ks 0.3 0.3 0.3
+Ns 60
+
+newmtl green
+Kd 0.3098 0.7098 0.2275
+Ks 0.3 0.3 0.3
+Ns 60
+
+newmtl blue
+Kd 0.1412 0.3373 0.8392
+Ks 0.3 0.3 0.3
+Ns 60
+
+newmtl purple
+Kd 0.5412 0.2471 0.7529
+Ks 0.3 0.3 0.3
+Ns 60
+
+newmtl pink
+Kd 0.9255 0.3725 0.6588
+Ks 0.3 0.3 0.3
+Ns 60
+
+newmtl magenta
+Kd 0.7608 0.1569 0.6039
+Ks 0.3 0.3 0.3
+Ns 60
+
+newmtl cyan
+Kd 0.1647 0.6549 0.8706
+Ks 0.3 0.3 0.3
+Ns 60
+
